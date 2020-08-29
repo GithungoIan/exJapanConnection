@@ -43,7 +43,11 @@ const userSchema = new mongoose.Schema({
 		default: true,
 		select: false
 	},
-});
+},
+		{
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  });
 
 
 const User = mongoose.model('User', userSchema);
