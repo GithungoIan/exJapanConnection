@@ -15,3 +15,5 @@ router
 	.get(vehicleController.getVehicle)
 	.patch(vehicleController.updateVehicle)
 	.delete(vehicleController.updateVehicle);
+	
+module.exports = router;
