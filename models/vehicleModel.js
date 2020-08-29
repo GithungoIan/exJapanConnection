@@ -53,7 +53,11 @@ const vehicleSchema = new mongoose.Schema(
 			select: false
 		},
 		location: String,
-	}
+	},
+		{
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
 
 const Vehicle = mongoose.model('Vehicle', vehicleSchema);
