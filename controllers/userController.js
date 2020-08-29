@@ -21,3 +21,11 @@ exports.createUser = (req, res) => {
         message: 'This route is not yet defined!'
     });
 }
+
+//  Update the user information
+exports.updateUser = (req, res) => {
+	res.status(500).json({
+		status: 'error',
+		message: 'This route is not yet defined!'
+	});
+}
