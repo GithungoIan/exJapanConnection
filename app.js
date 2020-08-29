@@ -1,9 +1,12 @@
 const express = require('express');
-
+const morgan = require('morgan');
 const app  = express();
 
-const port = 3000;
 
-app.listen(port, () => {
-    console.log(`app running on port ${port}`);
-})
+// Middleware
+if(process.env.NODE_ENV == 'development') {
+    app.use(morgan('dev'));
+}
+
+
+module.exports = app;
