@@ -28,3 +28,24 @@ exports.getAllVehicles = async (req, res) => {
 		})
 	}
 }
+
+// Get single vehicle based on its identifier
+exports.getVehicle = async (req, res) => {
+	try {
+		const singleVehicle = await Vehicle.findById(req.params.id);
+		
+		res.status(200).json({
+			status: 'success',
+			data: {
+				singleVehicle
+			}
+		})
+		
+	} catch (err) {
+		res.status(404).json({
+			status:'fail',
+			message: err.messages
+		})
+		
+	}
+}
