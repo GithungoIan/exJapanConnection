@@ -49,3 +49,22 @@ exports.getVehicle = async (req, res) => {
 		
 	}
 }
+
+// Post a new vehicle to the database
+exports.postVehicle = async (req, res) => {
+	try {
+		const newVehicle = await Vehicle.create(req.body);
+		
+		res.status(201).json({
+			status:'success',
+			data:{
+				vehicle: newVehicle
+			}
+		});
+	} catch (err) {
+		res.status(404).json({
+			status:'fail',
+			message: err.messages
+		});
+	}
+}
