@@ -29,3 +29,11 @@ exports.updateUser = (req, res) => {
 		message: 'This route is not yet defined!'
 	});
 }
+
+// delete user from collection
+exports.deleteUser = (req, res) => {
+	res.status(500).json({
+		status: 'error',
+		message: 'This route is not yet defined!'
+});
+}
