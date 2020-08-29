@@ -6,7 +6,8 @@ We are currently using.
     Node.js, Express and MongoDB
     
 ## Run Script
-    npm run 
+    npm start -> development
+    npm start:prod -> production 
     
 
     
