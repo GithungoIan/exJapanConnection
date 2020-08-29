@@ -68,3 +68,23 @@ exports.postVehicle = async (req, res) => {
 		});
 	}
 }
+
+// Update vehicle information
+exports.updateVehicle = async (req, res) => {
+	try {
+		const vehicle = await Vehicle.findByIdAndUpdate(req.params.id, req.body);
+		
+		res.status(200).json({
+			status: 'success',
+			data: {
+				vehicle
+			}
+		});
+		
+	} catch (err) {
+		res.status(404).json({
+			status:'fail',
+			message: err.messages
+		});
+	}
+}
