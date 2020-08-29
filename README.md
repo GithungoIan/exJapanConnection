@@ -5,7 +5,7 @@
 We are currently using.
     Node.js, Express and MongoDB
     
-## RUn Script
+## Run Script
     npm run 
     
 
