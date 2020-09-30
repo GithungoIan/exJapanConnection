@@ -8,31 +8,28 @@ const vehicleSchema = new mongoose.Schema(
 			trim: true,
 		},
 		slug: String,
-		spec: [
-			{
-				referenceNo: String,
-				millage: String,
-				modeCode: String,
-				registration: {
-					type: Date,
-					default: Date.now(),
-				},
-				manufacture: {
-					type: Date,
-					default: Date.now(),
-				},
-				modelGrade: String,
-				chassis: String,
-				engineSize: Number,
-				drive: String,
-				externalColor: String,
-				steering: String,
-				transmission: String,
-				fuel: String,
-				seats: Number,
-				doors: Number,
-			}
-		],
+    overview: [
+      {
+        millage: Number,
+        condition: String,
+        BodyType: String,
+        color: String,
+        Fuel: String,
+        transmission: String,
+        drive: String,
+        DutyType: String,
+        InteriorType: String,
+        engineSize: Number,
+        year:Number,
+        referenceNo: String,
+        registration: {
+          type: Date,
+          default: Date.now(),
+        },
+        model: String
+      }
+    ],
+    Features: [String],
 		price: {
 			type: Number,
 			required:[true, 'A vehicle must have a price']
