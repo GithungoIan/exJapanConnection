@@ -147,3 +147,13 @@ exports.isLoggedIn = async(req, res, next) => {
   }
   next();
 }
+
+// restrict ro
+exports.restrictTo = (..roles) => {
+  return (req, res, next) => {
+    if(!roles.Includes(req.user.role)){
+      return next(new AppError('You do not have permission to perform this action', 401));
+    }
+    next();
+  }
+}
