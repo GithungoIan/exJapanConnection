@@ -70,3 +70,14 @@ exports.login = catchAsync(async(req, res, next) => {
   // if okay end token to the user
   createSendToken(user, 200, res);
 });
+
+// logout
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'Logged out', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    status: 'success'
+  })
+}
