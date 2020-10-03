@@ -34,6 +34,8 @@ const upload = multer({
   fileFilter: multerFilter,
 });
 
+exports.uploadUserPhoto = upload.single('photo');
+
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if(!req.file){
     return next()
@@ -52,9 +54,8 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
 
 });
 
-exports.uploadUserPhoto = upload.single('photo');
 
-
+// fillrer out unwanted user info
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
@@ -65,7 +66,7 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-
+// Get all users
 exports.getAllUsers = CatchAsync(async(req, res) => {
 
   const users = await User.find();
@@ -78,6 +79,7 @@ exports.getAllUsers = CatchAsync(async(req, res) => {
   });
 })
 
+// Update Current user
 exports.updateMe = CatchAsync(async(req, res, next) => {
   // 1) Create an error if user tries to update password
   if (req.body.password || req.body.confirmPassword) {
@@ -103,7 +105,19 @@ exports.updateMe = CatchAsync(async(req, res, next) => {
       updatedUser,
     },
   });
-})
+});
+
+// Delete current user
+exports.deleteMe = catchAsync(async (req, res, next) => {
+  await User.findByIdAndUpdate(req.user.id, { active: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+  next();
+});
+
 
 
 // get single user
