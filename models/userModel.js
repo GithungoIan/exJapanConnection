@@ -1,5 +1,7 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -44,10 +46,21 @@ const userSchema = new mongoose.Schema({
 		select: false
 	},
 },
-		{
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
-  });
+	{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+});
+
+// Document middleware
+userSchema.pre('save', async function(next){
+  //only run this when password is modified
+  if(!this.isModified('password')) return next();
+  // Encrypt the user password
+  this.password = await bcrypt.hash(this.password, 12);
+  // delete the passwordConfirm
+  this.passwordConfirm = undefined;
+  next();
+})
 
 
 const User = mongoose.model('User', userSchema);
