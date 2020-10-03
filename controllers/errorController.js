@@ -1,5 +1,10 @@
 const AppError = require('../utils/appError');
 
+const handleCastErrorDb = (error) => {
+  const message = `Invalid ${err.apth}: ${err.value}`;
+  return new AppError(message, 400);
+}
+
 const sendErrorDev = (err, req, res) => {
   // API
   if(req.originalUrl.startsWith('/api')){
@@ -50,6 +55,8 @@ const sendErrorProd = (err, req, res) => {
     });
   }
 };
+
+
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
@@ -59,5 +66,7 @@ module.exports = (err, req, res, next) => {
   }else if(process.env.Node_Env === 'production'){
     let error = {..err};
     error.message = err.message;
+    // handle cast error
+    if(error.name === 'CastError') error = handleCastErrorDb(error);
   }
 }
