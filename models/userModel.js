@@ -52,6 +52,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Document middleware
+// Encrypt user password
 userSchema.pre('save', async function(next){
   //only run this when password is modified
   if(!this.isModified('password')) return next();
@@ -62,11 +63,19 @@ userSchema.pre('save', async function(next){
   next();
 });
 
+// Check if user changed passwords
 userSchema.pre('save', function(next){
   if(!this.isModified('password') || this.isNew){
     return next();
   };
   this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+// CHeck is user deleted their account
+userSchema.pre(/^find/, function(next){
+  // ths points to the current user
+  this.find({active: {$ne: false}});
   next();
 })
 
