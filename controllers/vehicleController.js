@@ -8,6 +8,7 @@ const AppError = require('../utils/appError');
 
 
 //multer configyrations
+/*
 const multerStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, 'public/images/vehicles');
@@ -18,6 +19,10 @@ const multerStorage = multer.diskStorage({
 		cb(null, `car-${uniqueSuffix}.${ext}`);
 	}
 });
+*/
+
+const multerStorage = multer.memoryStorage();
+
 const multerFilter = (req, file, cb) => {
 	if(file.mimetype.startsWith('image')){
 		cb(null, true);
@@ -31,8 +36,24 @@ const upload = multer({
 	fileFilter: multerFIlter,
 });
 
-exports.uploadUserPhoto = upload.single('photo');
+exports.uploadVehiclePhoto = upload.single('photo');
 
+// Resize vehicle photo
+exports.resizeVehiclePhoto = catchAsync(async(req, res, next) => {
+	if(!req.file){
+		return next()
+	}
+	const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E7);
+	req.file.filename = `car-${uniqueSuffix}.jpeg`;
+
+	sharp(req.file.buffer)
+		.resize(400, 500)
+		.toFormat('jpeg')
+		.jpeg({quality: 90})
+		.toFile(`public/images/vehicles/${req.file.filename}`);
+
+	next()
+});
 //Get all vehicles available in the database
 exports.getAllVehicles = async (req, res) => {
 	try{
