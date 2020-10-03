@@ -1,3 +1,4 @@
+const {promisify} = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
@@ -81,3 +82,40 @@ exports.logout = (req, res) => {
     status: 'success'
   })
 }
+
+// Protext
+exports.protect = catchAsync(async(req, res, next) => {
+  // 1) Getting the token and chek if it exist
+  let token;
+  if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
+    token = req.headers.authorization.split(' ')[1];
+  }else if(req.cookies.jwt){
+    token = req.cookies.jwt;
+  }
+
+  if(!token){
+    return next(new AppError('You are not Logged in Please login to gain access', 401));
+  }
+
+  // veryfy token
+  const decoded = await promisify(jwt.veryfy)(token , process.env.JWT_SECRET);
+
+  // check od user still exists
+  const currentUser = await User.findById(decoded.id);
+
+  if(!currentUser){
+    return next(new AppError('User belonging tot this token does not exist', 401));
+  }
+
+  // Check is user changed password after the token was issued
+  if(currentUser.changedPasswordAfter(decoded.iat)){
+    return next(
+      new AppError('You recently changed your pasword! Please login again');
+    )
+  }
+
+  // Frant access to the protexted route
+  req.user = currentUser;
+  res.locals.user = currentUser;
+  return next()
+});
