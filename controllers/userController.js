@@ -28,9 +28,28 @@ const multerFilter = (req, file, cb )=> {
       cb(new AppError('Not an image please upload only images', 404), false);
   }
 }
+
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
+});
+
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
+  if(!req.file){
+    return next()
+  }
+
+  const uniqueSuffix = Date.now() + '-'+ Math.round(Math.random() * 1E6)
+  req.file.filename = `user-${uniqueSuffix}.jpeg`
+
+  sharp(req.file.buffer)
+    .resize(500, 500)
+    .toFormat('jpeg')
+    .jpeg({quality: 90})
+    .toFile(`public/images/users/${req.file.filename}`);
+
+  next();
+
 });
 
 exports.uploadUserPhoto = upload.single('photo');
