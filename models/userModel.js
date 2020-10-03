@@ -77,7 +77,13 @@ userSchema.pre(/^find/, function(next){
   // ths points to the current user
   this.find({active: {$ne: false}});
   next();
-})
+});
+
+// Instance method
+// Compare user passwords 
+userSchema.methods.correctPassword = async function(candidatePassword, userPassword){
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 
 
 const User = mongoose.model('User', userSchema);
