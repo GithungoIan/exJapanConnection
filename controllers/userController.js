@@ -7,6 +7,7 @@ const AppError = require('../utils/AppError');
 
 // upload user image
 // multer configurations
+/*
 const multerStrorage = multer.diskStorage({
   destination: (req, file, next) => {
     cb(null, 'public/images/users');
@@ -17,6 +18,8 @@ const multerStrorage = multer.diskStorage({
     cb(null, `user-${uniqueSuffix}-${Date.now()}.${ext}`);
   }
 });
+*/
+const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, cb )=> {
   if (file.mimetype.startsWith('image')) {
