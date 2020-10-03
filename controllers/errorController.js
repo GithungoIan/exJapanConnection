@@ -1,11 +1,11 @@
 const AppError = require('../utils/appError');
 
-const handleCastErrorDb = (error) => {
+const handleCastErrorDb = (err) => {
   const message = `Invalid ${err.apth}: ${err.value}`;
   return new AppError(message, 400);
 }
 
-const handleDuplicateFieldsDB = (error) => {
+const handleDuplicateFieldsDB = (err) => {
   // Select the error within quotes
   const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
   console.log(value);
