@@ -19,6 +19,9 @@ const handleValidationErrorDb = (err) => {
   return new AppError(message, 400);
 }
 
+const handleJWTError = (err) => {
+  new AppError('Invlid token plese log in gain', 401);
+}
 const sendErrorDev = (err, req, res) => {
   // API
   if(req.originalUrl.startsWith('/api')){
@@ -86,6 +89,8 @@ module.exports = (err, req, res, next) => {
     if(error.name === 11000) error = handleDuplicateFieldsDB(error);
     // Validation errors
     if(error.name === 'ValidationError') error = handleValidationErrorDb(error);
+    // handle jwt error
+    if(error.name === 'JsonWebTOkenError') error = handleJWTError(error);
 
   }
 }
