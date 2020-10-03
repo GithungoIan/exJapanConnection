@@ -22,6 +22,11 @@ const handleValidationErrorDb = (err) => {
 const handleJWTError = (err) => {
   new AppError('Invlid token plese log in gain', 401);
 }
+
+const handleJWTExpiredError = (err) => {
+  new AppError('Your token has expired please log in again', 401);
+}
+
 const sendErrorDev = (err, req, res) => {
   // API
   if(req.originalUrl.startsWith('/api')){
@@ -91,6 +96,9 @@ module.exports = (err, req, res, next) => {
     if(error.name === 'ValidationError') error = handleValidationErrorDb(error);
     // handle jwt error
     if(error.name === 'JsonWebTOkenError') error = handleJWTError(error);
+    // handle TOkenExpired Error
+    if(error.name === 'TokenExpiredError') error = handleJWTExpiredError(error);
 
+    sendErrorProd(error, req, res);
   }
 }
