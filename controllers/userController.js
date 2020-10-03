@@ -54,12 +54,17 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
 
 exports.uploadUserPhoto = upload.single('photo');
 
-exports.getAllUsers = (req, res) => {
-    res.status(500).json({
-        status: 'error',
-        message: 'This route is not yet defined!'
-    });
-}
+exports.getAllUsers = CatchAsync(async(req, res) => {
+
+  const users = await User.find();
+  res.status(200).json({
+    status: 'Success',
+    results: users.length,
+    data: {
+      users,
+    },
+  });
+})
 
 
 // get single user
