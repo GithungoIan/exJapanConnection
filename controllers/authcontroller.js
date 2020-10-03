@@ -35,7 +35,7 @@ const createSendToken = (user, statusCode, res) => {
   });
 }
 
-
+// signup
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
@@ -52,4 +52,21 @@ exports.signup = catchAsync(async (req, res, next) => {
     }
   });
 
+});
+
+// login
+exports.login = catchAsync(async(req, res, next) => {
+  const {email, password} = req.body;
+  // check if email abd password exists
+  if(!email || !password){
+    retun next(new AppError('Please provide email and password'));
+  }
+  // check if user exist and password is correct
+  const user = await User.findOne({email}).selecct('+password');
+  if(!user || !(await user.correctPassword(password, user.password))){
+    return next(new AppError('Incorect email or password', 401));
+  }
+
+  // if okay end token to the user
+  createSendToken(user, 200, res);
 });
