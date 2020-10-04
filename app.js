@@ -44,6 +44,19 @@ app.use(express.json({limit: '10kb'}));
 app.use(express.urlencoded({extended: true, limit: '10kb'}));
 app.use(cookieParser());
 
+//Data Sanitization againist NOSQL query Injection
+app.use(mongoSanitize());
+// Data Sanitization againist Xss
+app.use(xss());
+
+// Prevent parameter ploution
+app.use(
+  hpp({
+    whitelist: ['price'],
+  })
+);
+
+
 
 // routes
 app.use('/api/v1/vehicles', vehicleRouter);
