@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const vehicleRouter = require('./routes/vehicleRoutes');
@@ -12,6 +14,9 @@ if(process.env.NODE_ENV == 'development') {
     app.use(morgan('dev'));
 }
 
+
+// Set seccurity Http headers
+app.use(helmet());
 // Limit request from same ip
 const limiter = rateLimit({
   max: 100,
