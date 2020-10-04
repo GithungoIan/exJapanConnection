@@ -3,20 +3,30 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const http = require('hpp');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const vehicleRouter = require('./routes/vehicleRoutes');
 const userRouter = require('./routes/userRoutes');
 
 const app  = express();
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 // Middleware
+
+// Set seccurity Http headers
+app.use(helmet());
+
+// Development logging
 if(process.env.NODE_ENV == 'development') {
     app.use(morgan('dev'));
 }
 
-
-// Set seccurity Http headers
-app.use(helmet());
 // Limit request from same ip
 const limiter = rateLimit({
   max: 100,
