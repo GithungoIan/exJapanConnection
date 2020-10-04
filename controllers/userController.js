@@ -1,8 +1,8 @@
 const multer = require('multer');
 const sharp = require('sharp');
 const User = require('../models/userModel');
-const CatchAsync = require('../utils/CatchAsync');
-const AppError = require('../utils/AppError');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
 
 
 // upload user image
@@ -67,7 +67,7 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 // Get all users
-exports.getAllUsers = CatchAsync(async(req, res) => {
+exports.getAllUsers = catchAsync(async(req, res) => {
 
   const users = await User.find();
   res.status(200).json({
@@ -80,7 +80,7 @@ exports.getAllUsers = CatchAsync(async(req, res) => {
 })
 
 // Update Current user
-exports.updateMe = CatchAsync(async(req, res, next) => {
+exports.updateMe = catchAsync(async(req, res, next) => {
   // 1) Create an error if user tries to update password
   if (req.body.password || req.body.confirmPassword) {
     return next(

@@ -2,7 +2,7 @@ const multer  = require('multer');
 const sharp = require('sharp');
 const Vehicle = require('../models/vehicleModel');
 const APIFeatures = require('../utils/apiFeatures');
-const catchAsync = require('../utils/AppError');
+const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 
@@ -33,7 +33,7 @@ const multerFilter = (req, file, cb) => {
 
 const upload = multer({
 	storage: multerStorage,
-	fileFilter: multerFIlter,
+	fileFilter: multerFilter,
 });
 
 exports.uploadVehiclePhoto = upload.single('photo');
