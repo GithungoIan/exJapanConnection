@@ -65,12 +65,12 @@ const vehicleSchema = new mongoose.Schema(
 const Vehicle = mongoose.model('Vehicle', vehicleSchema);
 
 // QUERY Middleware: runs before the save() and create()
-jobSchema.pre('save', function (next) {
+vehicleSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
 
-jobSchema.post(/^find/, function (docs, next) {
+vehicleSchema.post(/^find/, function (docs, next) {
   // console.log(`Query took ${Date.now() - this.start} milliseconds`);
   // console.log(docs);
   next();
