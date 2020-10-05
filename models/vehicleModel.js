@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const vehicleSchema = new mongoose.Schema(
   {
@@ -43,6 +44,10 @@ const vehicleSchema = new mongoose.Schema(
 			type: String,
 			trim: true,
 		},
+    imageCover: {
+      type: String,
+      required: [true, 'A vehicle must have a cover image']
+    },
 		images: [String],
 		postedAt: {
 			type: Date,
@@ -58,5 +63,18 @@ const vehicleSchema = new mongoose.Schema(
 );
 
 const Vehicle = mongoose.model('Vehicle', vehicleSchema);
+
+// QUERY Middleware: runs before the save() and create()
+jobSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
+jobSchema.post(/^find/, function (docs, next) {
+  // console.log(`Query took ${Date.now() - this.start} milliseconds`);
+  // console.log(docs);
+  next();
+});
+
 
 module.exports = Vehicle;
