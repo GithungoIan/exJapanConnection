@@ -36,7 +36,11 @@ const upload = multer({
 	fileFilter: multerFilter,
 });
 
-exports.uploadVehiclePhoto = upload.single('photo');
+
+exports.uploadTourImages = upload.fields([
+	{name: 'imageCover', maxCount: 1},
+	{name: 'images', maxCount: 7}
+]);
 
 // Resize vehicle photo
 exports.resizeVehiclePhoto = catchAsync(async(req, res, next) => {
@@ -63,16 +67,16 @@ exports.getAllVehicles = catchAsync(async(req, res, next) => {
 		.limitFields().
 		paginate();
 
-		const vehicles = await features.query;
+	const vehicles = await features.query;
 
-		//Send response back
-		res.status(200).json({
-			status:'success',
-			result: vehicles.length,
-			data: {
-				vehicles
-			}
-		});
+	//Send response back
+	res.status(200).json({
+		status:'success',
+		result: vehicles.length,
+		data: {
+			vehicles
+		}
+	});
 })
 
 // Get single vehicle based on its identifier
