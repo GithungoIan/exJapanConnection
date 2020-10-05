@@ -64,7 +64,7 @@ app.use('/api/v1/users', userRouter);
 
 // test Middleware
 app.all('*', (req, res, next) => {
-  next(new Apperror(`Can't find ${req.originalErl} on this Server`, 400));
+  next(new AppError(`Can't find ${req.originalErl} on this Server`, 400));
 });
 
 // error handling
