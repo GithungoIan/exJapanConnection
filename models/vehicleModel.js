@@ -61,9 +61,6 @@ const vehicleSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
-const Vehicle = mongoose.model('Vehicle', vehicleSchema);
-
 // QUERY Middleware: runs before the save() and create()
 vehicleSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
@@ -76,5 +73,5 @@ vehicleSchema.post(/^find/, function (docs, next) {
   next();
 });
 
-
+const Vehicle = mongoose.model('Vehicle', vehicleSchema);
 module.exports = Vehicle;
