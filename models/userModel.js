@@ -41,14 +41,14 @@ const userSchema = new mongoose.Schema({
 			message: 'Password are not the same!'
 		}
 	},
-	passwordChangedAt: Date,
-	passwordResetToken: String,
-	passwordResetExpires:Date,
-	active: {
-		type: Boolean,
-		default: true,
-		select: false
-	},
+  passwordChangeAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 },
 	{
   toJSON: { virtuals: true },
@@ -57,17 +57,6 @@ const userSchema = new mongoose.Schema({
 
 // Document middleware
 // Encrypt user password
-userSchema.pre('save', async function(next){
-  //only run this when password is modified
-  if(!this.isModified('password')) return next();
-  // Encrypt the user password
-  this.password = await bcrypt.hash(this.password, 12);
-  // delete the passwordConfirm
-  this.passwordConfirm = undefined;
-  next();
-});
-
-// Check if user changed passwords
 userSchema.pre('save', async function (next) {
   // only run this function if passowrd is modified
   if (!this.isModified('password')) return next();
