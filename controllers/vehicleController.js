@@ -76,78 +76,61 @@ exports.getAllVehicles = catchAsync(async(req, res, next) => {
 })
 
 // Get single vehicle based on its identifier
-exports.getVehicle = async (req, res) => {
-	try {
-		const singleVehicle = await Vehicle.findById(req.params.id);
+exports.getVehicle =catchAsync(async(req, res, next) => {
+	const vehicle = await Vehicle.findById(req.params.id);
 
-		res.status(200).json({
-			status: 'success',
-			data: {
-				singleVehicle
-			}
-		})
-
-	} catch (err) {
-		res.status(404).json({
-			status:'fail',
-			message: err.messages
-		})
-
+	if(!vehicle){
+		return next(new AppError('No vehicle found with that ID', 404));
 	}
-}
+
+	res.status(200).json({
+		status: 'success',
+		data: {
+			vehicle
+		}
+	});
+});
 
 // Post a new vehicle to the database
-exports.postVehicle = async (req, res) => {
-	try {
-		const newVehicle = await Vehicle.create(req.body);
+exports.postVehicle = catchAsync(async(req, res, next) => {
+	const newVehicle = await Vehicle.create(req.body);
 
-		res.status(201).json({
-			status:'success',
-			data:{
-				vehicle: newVehicle
-			}
-		});
-	} catch (err) {
-		res.status(404).json({
-			status:'fail',
-			message: err.messages
-		});
-	}
-}
+	res.status(201).json({
+		status:'success',
+		data:{
+			vehicle: newVehicle
+		}
+	});
+});
 
 // Update vehicle information
-exports.updateVehicle = async (req, res) => {
-	try {
-		const vehicle = await Vehicle.findByIdAndUpdate(req.params.id, req.body);
+exports.updateVehicle = catchAsync(async(req, res, next) => {
+	const vehicle = await Vehicle.findByIdAndUpdate(req.params.id, req.body,{
+		new: true,
+		runValidators: true
+	});
 
-		res.status(200).json({
-			status: 'success',
-			data: {
-				vehicle
-			}
-		});
-
-	} catch (err) {
-		res.status(404).json({
-			status:'fail',
-			message: err.messages
-		});
+	if(!vehicle){
+		return next(new AppError('No vehicle dound with that ID'));
 	}
-}
+	res.status(200).json({
+		status: 'success',
+		data: {
+			vehicle
+		}
+	});
+});
 
 // delete vehicle form the collection
-exports.deleteVehicle = async (req, res) => {
-	try {
-		await Vehicle.findByIdAndDelete(req.params.id);
+exports.deleteVehicle = catchAsync(async(req, res,next) => {
+	const vehicle = await Vehicle.findByIdAndDelete(req.params.id);
 
-		res.status(204).json({
-			status:'success',
-			data: null
-		});
-	} catch (err) {
-		res.status(404).json({
-			status:'fail',
-			message: err.messages
-		});
+	if(!vehicle){
+		return next(new AppError('No vehicle found with that ID', 404));
 	}
-}
+
+	res.status(204).json({
+		status:'success',
+		data: null
+	});
+});
