@@ -50,11 +50,11 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Prevent parameter ploution
-app.use(
-  hpp({
-    whitelist: ['price'],
-  })
-);
+// app.use(
+//   hpp({
+//     whitelist: ['price'],
+//   })
+// );
 
 
 
