@@ -37,7 +37,7 @@ exports.resizeVehicleImages = catchAsync(async(req, res, next) => {
 		.resize(400, 600)
 		.toFormat('jpeg')
 		.jpeg({quality: 90})
-		.toFile(`public/images/vehicle/${req.body.imageCover}`);
+		.toFile(`public/images/vehicles/${req.body.imageCover}`);
 		
 		// 2) Images 
 		req.body.images = [];
@@ -46,10 +46,12 @@ exports.resizeVehicleImages = catchAsync(async(req, res, next) => {
 				const filename = `vehicle-${Date.now()}-${i + 1}.jpeg`;
 				
 				await sharp (file.buffer)
-					.resize(700, 5000)
+					.resize(700, 500)
 					.toFormat('jpeg')
 					.jpeg({quality: 90})
 					.toFile(`public/images/vehicles/${filename}`);
+					
+				req.body.push(filename);
 			})
 		);
 		next();
