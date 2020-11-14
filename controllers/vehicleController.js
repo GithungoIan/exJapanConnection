@@ -58,6 +58,6 @@ exports.resizeVehicleImages = catchAsync(async(req, res, next) => {
 
 exports.getAllVehicles = factory.getAll(Vehicle);
 exports.getVehicle = factory.getOne(Vehicle);
-exports.createVehicle = factory.createOne(Vehicle);
+exports.postVehicle = factory.createOne(Vehicle);
 exports.deleteVehicle = factory.deleteOne(Vehicle);
 exports.updateVehicle = factory.updateOne(Vehicle);

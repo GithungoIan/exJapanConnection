@@ -3,12 +3,12 @@ const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
 
 
-exports.deleteOne = (Model) => {
+exports.deleteOne = (Model) => 
   catchAsync(async(req, res, next) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
-    
-    if(!doc){
-      return  next(new AppError('Do document found with that ID', 404));
+
+    if (!doc) {
+      return next(new AppError('No document found with that ID', 404));
     }
     
     res.status(204).json({
@@ -16,9 +16,9 @@ exports.deleteOne = (Model) => {
       data: null
     });
   });
-}
 
-exports.updateOne = (Model) => {
+
+exports.updateOne = (Model) => 
   catchAsync(async(req, res, next) => {
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -37,9 +37,9 @@ exports.updateOne = (Model) => {
     });
     
   });
-}
 
-exports.createOne = (Model) => {
+
+exports.createOne = (Model) => 
   catchAsync(async(req, res, next) => {
     const doc = await Model.create(req.body);
     
@@ -50,16 +50,11 @@ exports.createOne = (Model) => {
       }
     });
   });
-}
 
-exports.getOne = (Model, popOptions) => {
+
+exports.getOne = (Model) => 
   catchAsync(async(req, res, next) => {
     let query = Model.findById(req.params.id);
-    
-    if(popOptions){
-      query = query.populate(popOptions);
-    }
-    
     const doc = await query
     
     if(!doc){
@@ -72,11 +67,11 @@ exports.getOne = (Model, popOptions) => {
       }
     });
   });
-}
 
-exports.getAll = (Model) => {
+
+exports.getAll = (Model) => 
   catchAsync(async(req, res, next) => {
-    //To allow for bested Get reviews on vehicles(simple hack)
+    //To allow for nested Get reviews on vehicles(simple hack)
     let filter = {};
     if(req.params.vehicleId) {
       filter = {vehicle: req.params.vehicleId};
@@ -100,4 +95,3 @@ exports.getAll = (Model) => {
       }
     });
   });
-}
