@@ -74,7 +74,7 @@ exports.getOne = (Model, popOptions) => {
   });
 }
 
-exports.gatAll = (Model) => {
+exports.getAll = (Model) => {
   catchAsync(async(req, res, next) => {
     //To allow for bested Get reviews on vehicles(simple hack)
     let filter = {};
