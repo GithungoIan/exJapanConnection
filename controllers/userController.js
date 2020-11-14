@@ -44,7 +44,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   const uniqueSuffix = Date.now() + '-'+ Math.round(Math.random() * 1E6)
   req.file.filename = `user-${uniqueSuffix}.jpeg`
 
-  sharp(req.file.buffer)
+  await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat('jpeg')
     .jpeg({quality: 90})
@@ -67,7 +67,7 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 // Get all users
-exports.getAllUsers = catchAsync(async(req, res) => {
+exports.getAllUsers = catchAsync(async(req, res, next) => {
 
   const users = await User.find();
   res.status(200).json({

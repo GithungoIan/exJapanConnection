@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "start: prod": "NODE_ENV=production nodemon server.js"
+    "start: prod": "NODE_ENV=production nodemon server.js",
+    "sass": "node-sass -w public/scss/ -o public/dist/css --recursive"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,6 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.3.1"
   }
 }
