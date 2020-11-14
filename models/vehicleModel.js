@@ -54,11 +54,10 @@ const vehicleSchema = new mongoose.Schema({
 
 // QUERY MIDDLEWARE: RUN  BEFORE SAVE() AND CREATE()
 vehicleSchema.pre('save', function(next) {
-  this.slug = Slugify(this.model, {lower: true});
+  this.slug = slugify(`${this.model}-${this.make}`, {lower: true});
+  // this.slug = slugify(this.name, {lower: true});
   next();
-});
+})
 
-
-
-const Vehicle = mongoose.model('vehicle', vehicleSchema);
+const Vehicle = mongoose.model('Vehicle', vehicleSchema);
 module.exports = Vehicle;
