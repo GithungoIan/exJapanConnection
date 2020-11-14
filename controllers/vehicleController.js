@@ -51,7 +51,7 @@ exports.resizeVehicleImages = catchAsync(async(req, res, next) => {
 					.jpeg({quality: 90})
 					.toFile(`public/images/vehicles/${filename}`);
 					
-				req.body.push(filename);
+				req.body.images.push(filename);
 			})
 		);
 		next();
