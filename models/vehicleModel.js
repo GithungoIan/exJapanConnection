@@ -39,6 +39,10 @@ const vehicleSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  datePosted: {
+    type: Date,
+    default: Date.now()
+  },
   imageCover: {
     type: String,
     required: [true, 'A vehicle must have a cover image'],
