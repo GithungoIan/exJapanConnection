@@ -73,3 +73,31 @@ exports.getOne = (Model, popOptions) => {
     });
   });
 }
+
+exports.gatAll = (Model) => {
+  catchAsync(async(req, res, next) => {
+    //To allow for bested Get reviews on vehicles(simple hack)
+    let filter = {};
+    if(req.params.vehicleId) {
+      filter = {vehicle: req.params.vehicleId};
+    }
+    
+    const features = new APIFeatures(Model.find(filter), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+      
+    // const doc = await features.query.explain();
+    const doc = await features.query;
+    
+    // Send Response
+    res.status(200).json({
+      status: 'success',
+      result: doc.length,
+      data: {
+        doc
+      }
+    });
+  });
+}
