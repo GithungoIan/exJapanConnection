@@ -15,12 +15,12 @@ router.post(
 	 authController.protect,
 	 authController.updatePassword);
 
-router
- .patch('/updateMe',
- userController.uploadUserPhoto,
- userController.resizeUserPhoto,
- authController.protect,
- userController.updateMe)
+// router
+//  .patch('/updateMe',
+//  authController.protect,
+//  userController.uploadUserPhoto,
+//  userController.resizeUserPhoto,
+//  userController.updateMe)
 
 router.delete('/deleteMe', authController.protect, userController.deleteMe);
 
