@@ -8,7 +8,7 @@ router.
 	.post(vehicleController.postVehicle);
 	
 router
-	.route('/id')
+	.route('/:id')
 	.get(vehicleController.getVehicle)
 	.patch(vehicleController.updateVehicle)
 	.delete(vehicleController.deleteVehicle)
