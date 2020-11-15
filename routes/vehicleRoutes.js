@@ -10,7 +10,10 @@ router.
 router
 	.route('/:id')
 	.get(vehicleController.getVehicle)
-	.patch(vehicleController.updateVehicle)
+	.patch(
+		vehicleController.uploadVehicleImages,
+		vehicleController.resizeVehicleImages,
+		vehicleController.updateVehicle)
 	.delete(vehicleController.deleteVehicle)
 	
 module.exports = router
