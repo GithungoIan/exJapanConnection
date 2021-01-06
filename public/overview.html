@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+<head>
+  <meta charset="utf-8">
+  <title>List view page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css"
+    integrity="sha512-2KRz1UY/OYx7yBlulfAB4FqeSUMzlkvxCX6IalaJfhrihGo8lbY+AOm5isINAIcGV/sCqi7Pic6Mq6pznnP4mA=="
+    crossorigin="anonymous" />
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+
+<body>
+  <div id="__next">
+    <section class="position-relative d-flex flex-column" style="min-height: 100vh; overflow: hidden;">
+      <div id="main-page-wrapper" class="main-page-wrapper flex-fill">
+        <div class="container search-page-container">
+          <div class="row">
+            <div class="col-lg-3 col-md-12">
+              <div class="left-side-filter">
+                <div class="desktop-show">
+                  <div class="filter-box filter-desktop common-filter">
+                    <h2 class="box-header strong">
+                      Filter By
+                      <span class="clear-all">Clear All</span>
+                    </h2>
+                    <form class="mt-4">
+                      <!-- Make -->
+                      <div class="select-field-container form-group has-value">
+                        <!-- Make Name -->
+                        <div class="toggle-header d-flex justify-content-between">
+                          <span class="input-value">Mazda</span>
+                          <i class="fas fa-sort-down"></i>
+                        </div>
+                        <!-- Drop down -->
+                        <div class="options-list scroll scroll-y collapse">
+                          <div class="section-item">
+                            Toyota
+                            <span class="doc-count">
+                              (
+                              1200
+                              )
+                            </span>
+                          </div>
+                          <div class="section-item">
+                            NIssan
+                            <span class="doc-count">
+                              (
+                              1000
+                              )
+                            </span>
+                          </div>
+                          <div class="section-item">
+                            Suzuki
+                            <span class="doc-count">
+                              (
+                              1100
+                              )
+                            </span>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <!-- Model -->
+                      <div class="select-field-container form-group has-value">
+                        <!-- Model Name -->
+                        <div class="toggle-header d-flex justify-content-between">
+                          <span class="input-value">Roadster</span>
+                          <i class="fas fa-sort-down"></i>
+                        </div>
+                        <!-- Model drop down -->
+                        <div class="options-list scroll scroll-y collapse">
+                          <div class="section-item">
+                            Demio
+                            <span class="doc-count">
+                              (
+                              500
+                              )
+                            </span>
+                          </div>
+                          <div class="section-item">
+                            CX-5
+                            <span class="doc-count">
+                              (
+                              200
+                              )
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Year -->
+                      <div class="select-field-container form-group undefined">
+                        <div class="toggle-header d-flex justify-content-between false">
+                          Year
+                          <i class="fas fa-sort-down"></i>
+                        </div>
+
+                        <div class="options-list multiple-select collapse">
+                          <div class="p-3">
+                            <div class="select-raw-container form-group">
+                              <select class="" name="minYear">
+                                <option value="">Min Year</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                              </select>
+                            </div>
+
+                            <div class="select-raw-container form-group">
+                              <select class="" name="maxYear">
+                                <option value="">Max Year</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <!-- Price -->
+                      <div class="select-field-container form-group undefined">
+                        <div class="toggle-header d-flex justify-content-between false">
+                          Price
+                          <i class="fas fa-sort-down"></i>
+                        </div>
+
+                        <div class="options-list multiple-select collapse show">
+                          <div class="p-3">
+                            <div class="select-raw-container form-group">
+                              <select class="" name="minPrice">
+                                <option value="">Min Price</option>
+                                <option value="100000">100,000 Ksh</option>
+                                <option value="300000">300,000 Ksh</option>
+                                <option value="500000">500,000 Ksh</option>
+                                <option value="700000">700,000 Ksh</option>
+                                <option value="1000000">1 million Ksh</option>
+                                <option value="1200000">1.2 million Ksh</option>
+                                <option value="1500000">1.5 million Ksh</option>
+                                <option value="1700000">1.7 million Ksh</option>
+                              </select>
+                            </div>
+                            <div class="select-raw-container form-group">
+                              <select class="" name="maxPrice">
+                                <option value="">Max Price</option>
+                                <option value="100000">100,000 Ksh</option>
+                                <option value="300000">300,000 Ksh</option>
+                                <option value="500000">500,000 Ksh</option>
+                                <option value="700000">700,000 Ksh</option>
+                                <option value="1000000">1 million Ksh</option>
+                                <option value="1200000">1.2 million Ksh</option>
+                                <option value="1500000">1.5 million Ksh</option>
+                                <option value="1700000">1.7 million Ksh</option>
+                              </select>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <!-- Filter Btn -->
+                      <div>
+                        <button class="btn btn-block btn-primary">
+                          <strong>Filter</strong>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-9 col-md-12">
+              <div class="main-list">
+                <div class="main-content">
+                  <div class="car-list-items">
+                    <a target="_blank" href="#">
+                      <div class="car-item-row">
+                        <div class="row">
+                          <div class="p-r-o col-lg-4 col-md-12">
+                            <div class="car-image-wrapper">
+                              <div class="img-item">
+                                <div class="img-item-inner" style="background-image: url(images/vehicle-1.jpg)">
+                                </div>
+                              </div>
+                              <span class="image-count">
+                                9<i class="fas fa-camera ml-2"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-8 col-md-12">
+                            <div class="car-info">
+                              <h2 class="strong">Mazda Demio 2013</h2>
+                              <div class="row row">
+                                <div class="col">
+                                  <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Fuel Type -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-gas-pump"></i>
+                                        </span>
+                                        <span>Petrol</span>
+                                      </div>
+                                      <!-- Transmission -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-automatic mr-2"></i>
+                                        </span>
+                                        <span>Automatic</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Millage -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-road"></i>
+                                        </span>
+                                        <span>136843 Km</span>
+                                      </div>
+                                      <!-- Engine size -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-engine mr-2"></i>
+                                        </span>
+                                        <span>1300 cc</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="test-right car-offer">
+                                    <div class="car-price">
+                                      Ksh.
+                                      750,000
+                                    </div>
+                                    <div class="car-price-duty">
+                                      Duty paid
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="group-button">
+                                <div
+                                  class="d-flex text-center align-items-center justify-content-center btn-view-detail">
+                                  <i class="fas fa-car"></i>
+                                  <div class="detail text-center ml-3">
+                                    <span>View Details</span>
+                                  </div>
+                                </div>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <a target="_blank" href="#">
+                      <div class="car-item-row">
+                        <div class="row">
+                          <div class="p-r-o col-lg-4 col-md-12">
+                            <div class="car-image-wrapper">
+                              <div class="img-item">
+                                <div class="img-item-inner" style="background-image: url(images/vehicle-1.jpg)">
+                                </div>
+                              </div>
+                              <span class="image-count">
+                                9<i class="fas fa-camera ml-2"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-8 col-md-12">
+                            <div class="car-info">
+                              <h2 class="strong">Mazda Demio 2013</h2>
+                              <div class="row row">
+                                <div class="col">
+                                  <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Fuel Type -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-gas-pump"></i>
+                                        </span>
+                                        <span>Petrol</span>
+                                      </div>
+                                      <!-- Transmission -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-automatic mr-2"></i>
+                                        </span>
+                                        <span>Automatic</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Millage -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-road"></i>
+                                        </span>
+                                        <span>136843 Km</span>
+                                      </div>
+                                      <!-- Engine size -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-engine mr-2"></i>
+                                        </span>
+                                        <span>1300 cc</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="test-right car-offer">
+                                    <div class="car-price">
+                                      Ksh.
+                                      750,000
+                                    </div>
+                                    <div class="car-price-duty">
+                                      Duty paid
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="group-button">
+                                <div
+                                  class="d-flex text-center align-items-center justify-content-center btn-view-detail">
+                                  <i class="fas fa-car"></i>
+                                  <div class="detail text-center ml-3">
+                                    <span>View Details</span>
+                                  </div>
+                                </div>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <a target="_blank" href="#">
+                      <div class="car-item-row">
+                        <div class="row">
+                          <div class="p-r-o col-lg-4 col-md-12">
+                            <div class="car-image-wrapper">
+                              <div class="img-item">
+                                <div class="img-item-inner" style="background-image: url(images/vehicle-1.jpg)">
+                                </div>
+                              </div>
+                              <span class="image-count">
+                                9<i class="fas fa-camera ml-2"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-8 col-md-12">
+                            <div class="car-info">
+                              <h2 class="strong">Mazda Demio 2013</h2>
+                              <div class="row row">
+                                <div class="col">
+                                  <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Fuel Type -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-gas-pump"></i>
+                                        </span>
+                                        <span>Petrol</span>
+                                      </div>
+                                      <!-- Transmission -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-automatic mr-2"></i>
+                                        </span>
+                                        <span>Automatic</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Millage -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-road"></i>
+                                        </span>
+                                        <span>136843 Km</span>
+                                      </div>
+                                      <!-- Engine size -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-engine mr-2"></i>
+                                        </span>
+                                        <span>1300 cc</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="test-right car-offer">
+                                    <div class="car-price">
+                                      Ksh.
+                                      750,000
+                                    </div>
+                                    <div class="car-price-duty">
+                                      Duty paid
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="group-button">
+                                <div
+                                  class="d-flex text-center align-items-center justify-content-center btn-view-detail">
+                                  <i class="fas fa-car"></i>
+                                  <div class="detail text-center ml-3">
+                                    <span>View Details</span>
+                                  </div>
+                                </div>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                    <a target="_blank" href="#">
+                      <div class="car-item-row">
+                        <div class="row">
+                          <div class="p-r-o col-lg-4 col-md-12">
+                            <div class="car-image-wrapper">
+                              <div class="img-item">
+                                <div class="img-item-inner" style="background-image: url(images/vehicle-1.jpg)">
+                                </div>
+                              </div>
+                              <span class="image-count">
+                                9<i class="fas fa-camera ml-2"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-lg-8 col-md-12">
+                            <div class="car-info">
+                              <h2 class="strong">Mazda Demio 2013</h2>
+                              <div class="row row">
+                                <div class="col">
+                                  <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Fuel Type -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-gas-pump"></i>
+                                        </span>
+                                        <span>Petrol</span>
+                                      </div>
+                                      <!-- Transmission -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-automatic mr-2"></i>
+                                        </span>
+                                        <span>Automatic</span>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-12">
+                                      <!-- Millage -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="fas fa-road"></i>
+                                        </span>
+                                        <span>136843 Km</span>
+                                      </div>
+                                      <!-- Engine size -->
+                                      <div class="car-spec-field">
+                                        <span class="spec-icon mr-2">
+                                          <i class="icon icon-engine mr-2"></i>
+                                        </span>
+                                        <span>1300 cc</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="test-right car-offer">
+                                    <div class="car-price">
+                                      Ksh.
+                                      750,000
+                                    </div>
+                                    <div class="car-price-duty">
+                                      Duty paid
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="group-button">
+                                <div
+                                  class="d-flex text-center align-items-center justify-content-center btn-view-detail">
+                                  <i class="fas fa-car"></i>
+                                  <div class="detail text-center ml-3">
+                                    <span>View Details</span>
+                                  </div>
+                                </div>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+
+
+                    <div class="control-bar">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+  </div>
+</body>
+
+</html>
