@@ -12,6 +12,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const vehicleRouter = require('./routes/vehicleRoutes');
 const userRouter = require('./routes/userRoutes');
+const viewsRouter = require('./routes/viewRoutes');
 
 const app  = express();
 app.set('view engine', 'pug');
@@ -59,8 +60,10 @@ app.use(
 
 
 // routes
+app.use('/', viewsRouter);
 app.use('/api/v1/vehicles', vehicleRouter);
 app.use('/api/v1/users', userRouter);
+
 
 // test Middleware
 app.all('*', (req, res, next) => {
