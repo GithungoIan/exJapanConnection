@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icn/nav-arrow-left-white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icn/nav-arrow-left-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M4.93141898,6.73895138 C4.60369039,6.42008504 4.07264889,6.42038849 3.74530458,6.73962916 C3.41796027,7.05886983 3.41827179,7.57615777 3.74600038,7.89502411 L9.50675518,13.5 L15.2546958,7.89434594 C15.5820399,7.57510505 15.581728,7.05781711 15.2539992,6.73895099 C14.9262704,6.42008486 14.3952289,6.42038867 14.0678848,6.73962956 L9.50536277,11.1892093 L4.93141898,6.73895138 Z" id="Line" fill="#FFFFFF" fill-rule="nonzero" transform="translate(9.500000, 10.000000) rotate(-270.000000) translate(-9.500000, -10.000000) "></path>
+    </g>
+</svg>

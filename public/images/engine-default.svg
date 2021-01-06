@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icn/engin-default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icn/engin-default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8,2 L8,4 L10,4 L10,6 L12,6 L12,4 L14,4 L14,2 L8,2 Z M7.40626693,6.89059961 L6,9 L3,9 L3,15 L6,15 L7.40626693,17.1094004 C7.77719849,17.6657977 8.40166114,18 9.07036752,18 L13.9296325,18 C14.5983389,18 15.2228015,17.6657977 15.5937331,17.1094004 L17,15 L17,8 C17,6.8954305 16.1045695,6 15,6 L9.07036752,6 C8.40166114,6 7.77719849,6.33420227 7.40626693,6.89059961 Z M18,7 L18,14 L20,14 L20,7 L18,7 Z M13,8.5 L12.09375,11 L13.59375,11 L10,14.59375 L11.09375,12 L9.6875,12 L13,8.5 Z M0,9 L0,15 L2,15 L2,9 L0,9 Z" id="Shape" fill="#787C83" fill-rule="nonzero"></path>
+    </g>
+</svg>

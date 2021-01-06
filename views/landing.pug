@@ -1,0 +1,71 @@
+extends base
+block content
+  section.hero
+    .container.grid 
+      .hero-text
+        h1 ExJpLimited
+        p xJpLimited Is the number one stop shop for all your car imports and sales we import vehicles from japan at a very customer friendly price
+        a.btn.btn-outline(href='about') Read More 
+      .hero-image
+        img(src='images/hero-image.png' alt='hero image')
+  
+  section.vehicles
+    .container
+      h2.md.text-center.my-2 Featured Vehicles 
+      .grid.grid-3.text-center.my-4
+        //- each vehicle in vehicles 
+          .vehice
+            //- img(src=`images/vehicles/${vehicle.imageCover}` alt=``)
+            //- h3= vehice.name
+            p
+  section.stats 
+    .container
+      h3.stats-heading.text-center.my-1 What ExJpLimited Has to Offer 
+      .grid.grid-3.text-center.my-4
+        .icons
+          i.fas.fa-car-side.fa-5x
+          h3 10000
+          p.text-secondary Vehicles Imported 
+        .icons
+          i.fas.fa-handshake.fa-5x
+          h3 Increasing
+          p.text-secondary Patners
+        .icons 
+          i.fas.fa-users.fa-5x
+          h3 2000
+          p.text-secondary Satisfied Customers
+        
+  section.sales.bg-primary.my-2.py-2 
+    .container.grid 
+      .text-center 
+        h2.md Easy imports and fast tracked duty payment process
+        p.lead.my-1 ExJpLimited is the best and the fastest car importers from japan with good payment plans and discounts for our loyal customers
+        a.btn.btn-dark(href='/imports') Read More
+        
+  section.brands
+    h2.md.text-center.my-2 Featured Brands 
+    .container.flex
+      .card
+        h3 BMW
+        img(src='images/logos/bmw.png' alt='bmw')
+      .card
+        h3 HONDA
+        img(src='images/logos/honda.png' alt='honda')
+      .card
+        h3 LEXUS
+        img(src='images/logos/lexus.png' alt='lexus')
+      .card
+        h3 MAZDA
+        img(src='images/logos/mazda.png' alt='mazda')
+      .card
+        h3 VOLKSWAGEN
+        img(src='images/logos/volkswagen.png' alt='volkswagen')
+      .card
+        h3 SUBARU
+        img(src='images/logos/subaru.png' alt='subaru')
+      .card
+        h3 MITSUBISHI
+        img(src='images/logos/mitsubishi.png' alt='mitsubishi')
+      .card
+        h3 SUZUKI
+        img(src='images/logos/suzuki.png' alt='suzuki')                  
