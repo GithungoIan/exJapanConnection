@@ -19,22 +19,25 @@ const vehicleSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  overview: [
-    {
-      millage: Number,
-      condition: String,
-      bodyType: String,
-      color: String,
-      Fuel: String,
-      transmission: String,
-      drive: String,
-      dutyType: String,
-      InteriorType: String,
-      engineSize: Number,
-      year: Number,
-      referenceNo: String
-    }
-  ],
+  featuredVehicle: {
+    type: Boolean,
+    default: false
+  },
+  overview: {
+    millage: Number,
+    condition:String,
+    bodyType: String,
+    color: String,
+    Fuel: String,
+    transmission: String,
+    drive: String,
+    dutyType: String,
+    InteriorType: String,
+    engineSize: Number,
+    year: Number,
+    referenceNo: String
+  },
+  features: [String],
   description: {
     type: String,
     trim: true,
@@ -57,6 +60,11 @@ const vehicleSchema = new mongoose.Schema({
 );
 
 // QUERY MIDDLEWARE: RUN  BEFORE SAVE() AND CREATE()
+vehicleSchema.pre(/^find/, function(next) {
+  this.find({featuredVehicle: {$ne: true}});
+  next();
+});
+
 vehicleSchema.pre('save', function(next) {
   this.slug = slugify(`${this.model}-${this.make}`, {lower: true});
   // this.slug = slugify(this.name, {lower: true});

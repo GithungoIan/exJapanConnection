@@ -32,24 +32,26 @@ exports.resizeVehicleImages = catchAsync(async(req, res, next) => {
 	if(!req.files.imageCover || !req.files.images) return next();
 	
 	// 1) Cover Image
-	req.body.imageCover = 'vehicle-${req.params.id}-${Date.now()}-cover.jpeg';
+	req.body.imageCover = `vehicle-${Date.now()}-cover.jpeg`
 	await sharp(req.files.imageCover[0].buffer)
 		.resize(400, 600)
 		.toFormat('jpeg')
 		.jpeg({quality: 90})
-		.toFile(`public/images/vehicle/${filename}`);
+		.toFile(`public/images/vehicles/${req.body.imageCover}`);
 		
 		// 2) Images 
 		req.body.images = [];
 		await Promise.all(
 			req.files.images.map(async (file, i) => {
-				const filename = `vehicle-${req.params.id}-${Date.now()}-${i + 1}.jpeg`;
+				const filename = `vehicle-${Date.now()}-${i + 1}.jpeg`;
 				
 				await sharp (file.buffer)
-					.resize(700, 5000)
+					.resize(700, 500)
 					.toFormat('jpeg')
 					.jpeg({quality: 90})
 					.toFile(`public/images/vehicles/${filename}`);
+					
+				req.body.images.push(filename);
 			})
 		);
 		next();

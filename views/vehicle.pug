@@ -1,0 +1,191 @@
+extends base
+block content
+  section.position-relative.d-flex.flex-column
+    // breadcrumbs
+    .main-page-wrapper
+      .breadcrumbs
+        .container
+      // title
+      .listing-top
+        .container
+          .row
+            .col-lg-5
+              .listing-title.p-2= `${vehicle.overview.year} ${vehicle.make} ${vehicle.model} For Sale`
+            .col-lg
+              .listing-price.p-2= `KSH ${vehicle.price}` 
+      // details
+      .listing-details
+        .container.detail-page-container
+          .row
+            // detail section
+            .col-lg-8.content
+              .listing-content
+                .listing-gallery
+                  .carousel
+                    button.carousel__button.carousel__button--left.is-hidden
+                      img(src="/images/nav-arrow-left-white.svg" alt="left arrow")
+                    .carousel__track-container
+                      ul.carousel__track
+                        li.carousel__slide.current-slide
+                          img.carousel__image(src="/images/slide-1.jpg" alt="Image 1")
+                        li.carousel__slide
+                          img.carousel__image(src="/images/slide-2.jpg" alt="Image 2")
+                        li.carousel__slide
+                          img.carousel__image(src="/images/slide-3.jpg" alt="Image 3")
+                    button.carousel__button.carousel__button--right
+                      img(src="/images/nav-arrow-right-white.svg" alt="right arrow")
+                    .carousel__nav
+                      button.carousel__indicator.current-slide
+                      button.carousel__indicator
+                      button.carousel__indicator
+                .listing-info
+                  .description
+                    .features-subheading
+                      h3.vehicle-description-heading.p-2 Description
+                    .listing-info--description
+                      .description-wrapper
+                        p.vehicles-description.p-2
+                          | Fielder hybrid 1500cc is here extremely economic unbelivable fuel economy almost 30kms/litre With steering controls dvd player keyless entry and many more endless extrass!!!
+                  .overview
+                    .overview-subheading
+                      h3.vehicle-overview-heading.p-2 Vehicle overview
+                    .listing-info--overview
+                      .overview-warapper
+                        ul.overview-list
+                          li.vehicle-key-info-list__item.p-2
+                            // model year
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                img(src="/images/year.svg" alt="")
+                                // year
+                              div
+                                span 2013
+                          li.vehicle-key-info-list__item.p-2
+                            // Fuel type
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                img(src="/images/fuel.svg" alt="")
+                              div
+                                span Petrol
+                          li.vehicle-key-info-list__item.p-2
+                            // Engine size
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                img(src="/images/engine-default.svg" alt="")
+                                // Engine
+                              div
+                                span 1300 cc
+                          li.vehicle-key-info-list__item.p-2
+                            // vehicle transmission
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                img(src="/images/gearbox.svg" alt="")
+                                // transmission
+                              div
+                                span automatic
+                          li.vehicle-key-info-list__item.p-2
+                            // vehicle seats
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                img(src="/images/comfort-default.svg" alt="")
+                                // seats
+                              div
+                                span 5 seats
+                          li.vehicle-key-info-list__item.p-2
+                            // vehicle millage
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                img(src="/images/mileage.svg" alt="")
+                                // mileage
+                              div
+                                span 13000km
+                  .features
+                    .features-subheading
+                      h3.vehicle-features-heading.p-2 Vehicle features
+                    .listing-info--features
+                      .features-warapper
+                        ul.features-list
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Electric Windows
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span AirBags
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Cup Holders
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Electric Mirrors
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Power Steering
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span AM/FM Radio
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Air Conditioning
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Anti-lock Brakes
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span CD Player
+                          li.vehicle-key-info-list__item.p-2
+                            .car-spec-field
+                              span.spec-icon.mr-2
+                                i.fas.fa-check
+                              div
+                                span Climate Control
+            // contact section
+            .col-lg-4.sidebar
+              .listing-sidebar
+                div
+                  .view-contact
+                    h5.contact-heading Contact the seller
+                .listing-contact-form
+                  .contact-form-content
+                    div
+                      form.contact-form
+                        .row
+                          .col-12
+                            input.e-input.m-small(type="text" placeholder="Your Name" value="" name="name")
+                        .row
+                          .col-12
+                            input.e-input.m-small(type="email" placeholder="Your Email" value="" name="email")
+                        .row
+                          .col-12
+                            input.e-input.m-small(type="text" placeholder="Your Mobile Number" value="" name="mobileNumber")
+                        .row
+                          .col-12
+                            textarea.e-input.m-small.m-has-min-height(name="mesage")
+                        button.b-btn.m-btn-blue(type="submit")
+                          span.button-text Send Message
