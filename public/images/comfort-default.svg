@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icn/comfort-default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icn/comfort-default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.47703296,15 L11,15 L12.6519691,7.56613908 C12.8553191,6.65106397 13.6669459,6 14.6043432,6 L18,6 L15,20 L5.03109888,20 C3.80438512,20 2.70125887,19.2531472 2.24566881,18.114172 L1.54855627,16.3713907 C1.34344286,15.8586072 1.59285877,15.2766367 2.10564229,15.0715233 C2.22376256,15.0242752 2.34981353,15 2.47703296,15 Z" id="Rectangle" fill="#787C83"></path>
+        <path d="M15,1 L16,1 C17.1045695,1 18,1.8954305 18,3 L18,5 L15,5 C13.8954305,5 13,4.1045695 13,3 L13,3 C13,1.8954305 13.8954305,1 15,1 Z" id="Rectangle-2" fill="#787C83"></path>
+    </g>
+</svg>
