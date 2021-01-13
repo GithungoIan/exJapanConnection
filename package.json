@@ -4,9 +4,13 @@
   "description": "Building  a car sales website with rust",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node NODE_ENV=production server.js",
+    "start:dev": "nodemon server.js",
     "start: prod": "NODE_ENV=production nodemon server.js",
-    "sass": "node-sass -w public/scss/ -o public/dist/css --recursive"
+    "sass": "node-sass -w public/scss/ -o public/dist/css --recursive",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
+
   },
   "repository": {
     "type": "git",
