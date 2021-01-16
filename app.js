@@ -53,7 +53,7 @@ app.use(xss());
 // Prevent parameter ploution
 app.use(
   hpp({
-    whitelist: ['price'],
+    whitelist: ['price', 'make', 'model', 'year'],
   })
 );
 
