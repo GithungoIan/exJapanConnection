@@ -26,9 +26,9 @@ block content
                       img(src="/images/nav-arrow-left-white.svg" alt="left arrow")
                     .carousel__track-container
                       ul.carousel__track
-                        each image in vehicles.images
+                        each image, i in vehicle.images            
                           li.carousel__slide.current-slide
-                            img.carousel__image(src=`public/images/vehicles/${image}` alt=`${vehicle.make}`)
+                            img.carousel__image(src=`/images/vehicles/${image}` alt=`vehicle${i + 1}`)
                        
                     button.carousel__button.carousel__button--right
                       img(src="/images/nav-arrow-right-white.svg" alt="right arrow")
@@ -56,14 +56,14 @@ block content
                                 img(src="/images/year.svg" alt="")
                                 // year
                               div
-                                span 2013
+                                span= vehicle.overview.year
                           li.vehicle-key-info-list__item.p-2
                             // Fuel type
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/fuel.svg" alt="")
                               div
-                                span Petrol
+                                span= vehicle.overview.Fuel
                           li.vehicle-key-info-list__item.p-2
                             // Engine size
                             .car-spec-field
@@ -71,7 +71,7 @@ block content
                                 img(src="/images/engine-default.svg" alt="")
                                 // Engine
                               div
-                                span 1300 cc
+                                span= `${vehicle.overview.engineSize} cc`
                           li.vehicle-key-info-list__item.p-2
                             // vehicle transmission
                             .car-spec-field
@@ -79,7 +79,7 @@ block content
                                 img(src="/images/gearbox.svg" alt="")
                                 // transmission
                               div
-                                span automatic
+                                span= vehicle.overview.transmission
                           li.vehicle-key-info-list__item.p-2
                             // vehicle seats
                             .car-spec-field
@@ -95,73 +95,22 @@ block content
                                 img(src="/images/mileage.svg" alt="")
                                 // mileage
                               div
-                                span 13000km
+                                span= `${vehicle.millage} Km`
                   .features
                     .features-subheading
                       h3.vehicle-features-heading.p-2 Vehicle features
                     .listing-info--features
                       .features-warapper
                         ul.features-list
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Electric Windows
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span AirBags
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Cup Holders
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Electric Mirrors
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Power Steering
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span AM/FM Radio
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Air Conditioning
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Anti-lock Brakes
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span CD Player
-                          li.vehicle-key-info-list__item.p-2
-                            .car-spec-field
-                              span.spec-icon.mr-2
-                                i.fas.fa-check
-                              div
-                                span Climate Control
+
+                          each feature in vehicle.features
+                            li.vehicle-key-info-list__item.p-2
+                              .car-spec-field
+                                span.spec-icon.mr-2
+                                  i.fas.fa-check
+                                div
+                                  span= feature
+                          
             // contact section
             .col-lg-4.sidebar
               .listing-sidebar
