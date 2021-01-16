@@ -26,12 +26,10 @@ block content
                       img(src="/images/nav-arrow-left-white.svg" alt="left arrow")
                     .carousel__track-container
                       ul.carousel__track
-                        li.carousel__slide.current-slide
-                          img.carousel__image(src="/images/slide-1.jpg" alt="Image 1")
-                        li.carousel__slide
-                          img.carousel__image(src="/images/slide-2.jpg" alt="Image 2")
-                        li.carousel__slide
-                          img.carousel__image(src="/images/slide-3.jpg" alt="Image 3")
+                        each image in vehicles.images
+                          li.carousel__slide.current-slide
+                            img.carousel__image(src=`public/images/vehicles/${image}` alt=`${vehicle.make}`)
+                       
                     button.carousel__button.carousel__button--right
                       img(src="/images/nav-arrow-right-white.svg" alt="right arrow")
                     .carousel__nav
@@ -44,8 +42,7 @@ block content
                       h3.vehicle-description-heading.p-2 Description
                     .listing-info--description
                       .description-wrapper
-                        p.vehicles-description.p-2
-                          | Fielder hybrid 1500cc is here extremely economic unbelivable fuel economy almost 30kms/litre With steering controls dvd player keyless entry and many more endless extrass!!!
+                        p.vehicles-description.p-2= vehicle.description
                   .overview
                     .overview-subheading
                       h3.vehicle-overview-heading.p-2 Vehicle overview
