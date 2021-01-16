@@ -10,7 +10,6 @@
     "sass": "node-sass -w public/scss/ -o public/dist/css --recursive",
     "watch": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "build": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
-
   },
   "repository": {
     "type": "git",
@@ -24,7 +23,7 @@
   "homepage": "https://github.com/GithungoIan/exJapanConnection#readme",
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -40,7 +39,7 @@
     "node-sass": "^4.14.1",
     "nodemailer": "^6.4.13",
     "pug": "^3.0.0",
-    "sharp": "^0.26.1",
+    "sharp": "^0.22.1",
     "slugify": "^1.4.5",
     "validator": "^13.1.17",
     "xss-clean": "^0.1.1"
