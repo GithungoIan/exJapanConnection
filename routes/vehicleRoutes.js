@@ -11,7 +11,8 @@ router
 	.route('/:id')
 	.get(vehicleController.getVehicle)
 	.patch(
-		vehicleController.uploadVehicleImage,
+		vehicleController.uploadVehicleImages,
+		vehicleController.resizeVehicleImages,
 		vehicleController.updateVehicle)
 	.delete(vehicleController.deleteVehicle)
 
