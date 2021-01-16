@@ -45,7 +45,6 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
   const uniqueSuffix =  Math.round(Math.random() * 1E5);
   req.body.imageCover = `vehicle-${uniqueSuffix}-${Date.now()}-cover.jpeg`;
   await sharp(req.files.imageCover[0].buffer)
-    .resize(900, 700)
     .toFormat('jpeg')
     .jpeg({quality: 90})
     .toFile(`public/images/vehicles/${req.body.imageCover}`);
@@ -61,7 +60,6 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
 
 
       await sharp(file.buffer)
-        .resize(900, 700)
         .toFormat('jpeg')
         .jpeg({quality: 90})
         .toFile(`public/images/vehicles/${filename}`);
