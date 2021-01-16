@@ -1,5 +1,5 @@
-const multer = require('multer');
-const sharp = require('sharp');
+// const multer = require('multer');
+// const sharp = require('sharp');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -19,40 +19,40 @@ const multerStrorage = multer.diskStorage({
   }
 });
 */
-const multerStorage = multer.memoryStorage();
+// const multerStorage = multer.memoryStorage();
+//
+// const multerFilter = (req, file, cb )=> {
+//   if (file.mimetype.startsWith('image')) {
+//       cb(null, true);
+//     } else {
+//       cb(new AppError('Not an image please upload only images', 404), false);
+//   }
+// }
 
-const multerFilter = (req, file, cb )=> {
-  if (file.mimetype.startsWith('image')) {
-      cb(null, true);
-    } else {
-      cb(new AppError('Not an image please upload only images', 404), false);
-  }
-}
-
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter,
-});
-
-exports.uploadUserPhoto = upload.single('photo');
-
-exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
-  if(!req.file){
-    return next()
-  }
-
-  const uniqueSuffix = Date.now() + '-'+ Math.round(Math.random() * 1E6)
-  req.file.filename = `user-${uniqueSuffix}.jpeg`
-
-  await sharp(req.file.buffer)
-    .resize(500, 500)
-    .toFormat('jpeg')
-    .jpeg({quality: 90})
-    .toFile(`public/images/users/${req.file.filename}`);
-
-  next();
-
-});
+// const upload = multer({
+//   storage: multerStorage,
+//   fileFilter: multerFilter,
+// });
+//
+// exports.uploadUserPhoto = upload.single('photo');
+//
+// exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
+//   if(!req.file){
+//     return next()
+//   }
+//
+//   const uniqueSuffix = Date.now() + '-'+ Math.round(Math.random() * 1E6)
+//   req.file.filename = `user-${uniqueSuffix}.jpeg`
+//
+//   await sharp(req.file.buffer)
+//     .resize(500, 500)
+//     .toFormat('jpeg')
+//     .jpeg({quality: 90})
+//     .toFile(`public/images/users/${req.file.filename}`);
+//
+//   next();
+//
+// });
 
 
 // fillrer out unwanted user info

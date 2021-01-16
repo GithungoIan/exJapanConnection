@@ -6,7 +6,7 @@ router.
 	route('/')
 	.get(vehicleController.getAllVehicles)
 	.post(vehicleController.postVehicle);
-	
+
 router
 	.route('/:id')
 	.get(vehicleController.getVehicle)
@@ -15,5 +15,5 @@ router
 		vehicleController.resizeVehicleImages,
 		vehicleController.updateVehicle)
 	.delete(vehicleController.deleteVehicle)
-	
+
 module.exports = router
