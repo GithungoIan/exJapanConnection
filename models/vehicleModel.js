@@ -67,7 +67,6 @@ vehicleSchema.pre(/^find/, function(next) {
 
 vehicleSchema.pre('save', function(next) {
   this.slug = slugify(`${this.make}-${this.model}`, {lower: true});
-  // this.slug = slugify(this.name, {lower: true});
   next();
 })
 
