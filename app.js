@@ -7,6 +7,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -14,7 +15,11 @@ const vehicleRouter = require('./routes/vehicleRoutes');
 const userRouter = require('./routes/userRoutes');
 const viewsRouter = require('./routes/viewRoutes');
 
+// start express app
 const app  = express();
+
+app.enable('trust proxy');
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -41,8 +46,12 @@ const limiter = rateLimit({
 app.use('/api', limiter)
 
 //Body parser json
-app.use(express.json({limit: '10kb'}));
-app.use(express.urlencoded({extended: true, limit: '10kb'}));
+// parse application/ x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse appliation/json
+app.use(bodyParser.json());
+
 app.use(cookieParser());
 
 //Data Sanitization againist NOSQL query Injection
@@ -53,11 +62,9 @@ app.use(xss());
 // Prevent parameter ploution
 app.use(
   hpp({
-    whitelist: ['price', 'make', 'model', 'year'],
+    whitelist: ['make', 'model', 'price', 'year'],
   })
 );
-
-
 
 // routes
 app.use('/', viewsRouter);
@@ -67,7 +74,7 @@ app.use('/api/v1/users', userRouter);
 
 // test Middleware
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalErl} on this Server`, 400));
+  next(new AppError(`Cant find ${req.originalUrl} on this server`, 400));
 });
 
 // error handling
