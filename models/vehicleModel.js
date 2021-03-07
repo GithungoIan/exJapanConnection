@@ -2,7 +2,8 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
-const vehicleSchema = new mongoose.Schema({
+const vehicleSchema = new mongoose.Schema(
+  {
   make: {
     type: String,
     required: [true, 'A vehicle must have a make'],
@@ -58,6 +59,8 @@ const vehicleSchema = new mongoose.Schema({
   toObject: {virtuals: true}
 }
 );
+
+vehicleSchema.index({slug: 1});
 
 // QUERY MIDDLEWARE: RUN  BEFORE SAVE() AND CREATE()
 vehicleSchema.pre(/^find/, function(next) {
