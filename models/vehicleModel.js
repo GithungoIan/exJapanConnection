@@ -25,7 +25,7 @@ const vehicleSchema = new mongoose.Schema(
     default: false
   },
   overview: {
-    millage: Number,
+    mileage: Number,
     condition:String,
     bodyType: String,
     color: String,
@@ -61,6 +61,12 @@ const vehicleSchema = new mongoose.Schema(
 );
 
 vehicleSchema.index({slug: 1});
+
+vehicleSchema.virtual('comments', {
+  ref: 'Comment', 
+  foreignField: 'vehicle',
+  localField: '_id'
+});
 
 // QUERY MIDDLEWARE: RUN  BEFORE SAVE() AND CREATE()
 vehicleSchema.pre(/^find/, function(next) {
