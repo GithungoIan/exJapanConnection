@@ -8,12 +8,16 @@ const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const vehicleRouter = require('./routes/vehicleRoutes');
 const userRouter = require('./routes/userRoutes');
 const viewsRouter = require('./routes/viewRoutes');
+const commentRouter = require('./routes/commentRoutes');
+
 
 // start express app
 const app  = express();
@@ -24,6 +28,10 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
+
+// Implement CORS
+app.use(cors());
+app.options('*', cors());
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,31 +53,31 @@ const limiter = rateLimit({
 
 app.use('/api', limiter)
 
-//Body parser json
-// parse application/ x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse appliation/json
-app.use(bodyParser.json());
-
+// Body parser, reading data from body into req.body
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 //Data Sanitization againist NOSQL query Injection
 app.use(mongoSanitize());
+
 // Data Sanitization againist Xss
 app.use(xss());
 
 // Prevent parameter ploution
 app.use(
   hpp({
-    whitelist: ['make', 'model', 'price', 'year'],
+    whitelist: ['make', 'model', 'price', 'year']
   })
 );
+
+app.use(compression());
 
 // routes
 app.use('/', viewsRouter);
 app.use('/api/v1/vehicles', vehicleRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/comments', commentRouter);
 
 
 // test Middleware
