@@ -1,6 +1,11 @@
 const express = require('express');
 const vehicleController = require('../controllers/vehicleController');
+const commentRouter = require('./commentRoutes');
 const router = express.Router();
+
+
+router.use('/:tourId/comments', commentRouter);
+
 
 router.
 	route('/')
