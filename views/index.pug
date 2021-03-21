@@ -1,0 +1,55 @@
+extends base 
+
+block append head 
+  script(src='/js/carousel.js')
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/detailV.css')
+block content
+  
+  
+  .col-lg.col-md-12
+    .main-list 
+      .main-content
+        .car-list-items
+          each vehicle in vehicles
+            .list__vehicle-card 
+              .car-item-row
+                .row 
+                  .p-r-o.col-lg-4.col-md-12
+                    .car-image-wrapper 
+                      .img-item
+                        .img-item-inner(style= `background-image: url(images/${vehicle.imageCover})`)
+                      span.image-count
+                        span= vehicle.images.length
+                        i.fas.fa-camera.ml-2
+                  .col-lg-8.col-md-12
+                    .car-info
+                      a.link(href=`/vehicle/${vehicle.slug}`)
+                        h3.strong=`${vehicle.make} ${vehicle.model} ${vehicle.overview.year}`
+                      .row.row 
+                        .col 
+                          .row 
+                            .col-md-6.col-sm-6.col-12
+                              .car-spec-field
+                                span.spec-icon.mr-2
+                                  img(src="/images/fuel.svg" alt="")
+                                span= vehicle.overview.Fuel
+                              .car-spec-field
+                                span.spec-icon.mr-2
+                                  img(src="/images/gearbox.svg" alt="")
+                                span= vehicle.overview.transmission
+                            .col-md-6.col-sm-6.col-12
+                              .car-spec-field
+                                span.spec-icon.mr-2
+                                  img(src="/images/mileage.svg" alt="")
+                                span= vehicle.overview.mileage
+                              .car-spec-field
+                                span.spec-icon.mr-2
+                                  img(src="/images/engine-default.svg" alt="")
+                                span= vehicle.overview.engineSize
+                        .col 
+                          .test-right.car-offer 
+                            .car-price 
+                              span= `KSH ${vehicle.price}`
+                            .car-price-duty 
+                              span= vehicle.overview.dutyType

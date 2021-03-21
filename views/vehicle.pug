@@ -1,4 +1,9 @@
 extends base
+
+block append head 
+  link(rel='stylesheet' href='/css/style.css')
+  link(rel='stylesheet' href='/css/detailV.css')
+    
 block content
   section.position-relative.d-flex.flex-column
     // breadcrumbs
@@ -95,7 +100,7 @@ block content
                                 img(src="/images/mileage.svg" alt="")
                                 // mileage
                               div
-                                span= `${vehicle.millage} Km`
+                                span= `${vehicle.overview.mileage} Km`
                   .features
                     .features-subheading
                       h3.vehicle-features-heading.p-2 Vehicle features
@@ -135,3 +140,5 @@ block content
                             textarea.e-input.m-small.m-has-min-height(name="mesage")
                         button.b-btn.m-btn-blue(type="submit")
                           span.button-text Send Message
+                          
+  script(src='/js/carousel.js')
