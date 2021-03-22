@@ -2,7 +2,8 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
-const vehicleSchema = new mongoose.Schema({
+const vehicleSchema = new mongoose.Schema(
+  {
   make: {
     type: String,
     required: [true, 'A vehicle must have a make'],
@@ -24,7 +25,7 @@ const vehicleSchema = new mongoose.Schema({
     default: false
   },
   overview: {
-    millage: Number,
+    mileage: Number,
     condition:String,
     bodyType: String,
     color: String,
@@ -59,6 +60,14 @@ const vehicleSchema = new mongoose.Schema({
 }
 );
 
+vehicleSchema.index({slug: 1});
+
+vehicleSchema.virtual('comments', {
+  ref: 'Comment', 
+  foreignField: 'vehicle',
+  localField: '_id'
+});
+
 // QUERY MIDDLEWARE: RUN  BEFORE SAVE() AND CREATE()
 vehicleSchema.pre(/^find/, function(next) {
   this.find({featuredVehicle: {$ne: true}});
@@ -66,8 +75,7 @@ vehicleSchema.pre(/^find/, function(next) {
 });
 
 vehicleSchema.pre('save', function(next) {
-  this.slug = slugify(`${this.model}-${this.make}`, {lower: true});
-  // this.slug = slugify(this.name, {lower: true});
+  this.slug = slugify(`${this.make}-${this.model}`, {lower: true});
   next();
 })
 

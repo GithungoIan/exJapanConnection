@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 🔥 Shutting down...');
   console.log(err.name, err.message);
@@ -13,7 +12,7 @@ dotenv.config({path: './config.env'});
 const app = require('./app');
 
 // const DB = process.env.DATABASE_LOCAL;
-const DB = process.env.DATABASE;
+const DB = process.env.ONLINE_DATABASE_URI;
 
 mongoose.connect(DB, {
     useCreateIndex: true,

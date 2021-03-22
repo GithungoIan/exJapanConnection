@@ -1,4 +1,9 @@
 extends base
+
+block append head 
+  link(rel='stylesheet' href='/css/main.css')
+  link(rel='stylesheet' href='/css/utilities.css')
+    
 block content
   #__next
     section.position-relative.d-flex.flex-column.my-3(style="min-height: 100vh; overflow: hidden;")
@@ -125,73 +130,50 @@ block content
                         div
                           button.btn.btn-block.btn-primary
                             strong Filter
+                            
               .col-lg-9.col-md-12
-                .main-list
+                .main-list 
                   .main-content
                     .car-list-items
-                      
                       each vehicle in vehicles
-                        .list__vehicle-card
+                        .list__vehicle-card 
                           .car-item-row
-                            .row
+                            .row 
                               .p-r-o.col-lg-4.col-md-12
-                                .car-image-wrapper
+                                .car-image-wrapper 
                                   .img-item
-                                    //- .img-item-inner(style=`images/vehicles/${vehicle.imageCover}`)
-                                    .img-item-inner
-                                      img(src=`images/vehicles/${vehicle.imageCover}` alt=`${vehicle.name}`)
+                                    .img-item-inner(style= `background-image: url(images/vehicles/${vehicle.imageCover})`)
                                   span.image-count
-                                    | 9
+                                    span= vehicle.images.length
                                     i.fas.fa-camera.ml-2
                               .col-lg-8.col-md-12
                                 .car-info
                                   a.link(href=`/vehicle/${vehicle.slug}`)
-                                    h3.strong=`${vehicle.make} ${vehicle.model} ${vehicle.overview.year}` 
-                                  .row.row
-                                    .col
-                                      .row
+                                    h3.strong=`${vehicle.make} ${vehicle.model} ${vehicle.overview.year}`
+                                  .row.row 
+                                    .col 
+                                      .row 
                                         .col-md-6.col-sm-6.col-12
-                                          // Fuel Type
                                           .car-spec-field
                                             span.spec-icon.mr-2
-                                              i.fas.fa-gas-pump
+                                              img(src="/images/fuel.svg" alt="")
                                             span= vehicle.overview.Fuel
-                                          // Transmission
                                           .car-spec-field
                                             span.spec-icon.mr-2
-                                              i.icon.icon-automatic.mr-2
+                                              img(src="/images/gearbox.svg" alt="")
                                             span= vehicle.overview.transmission
                                         .col-md-6.col-sm-6.col-12
-                                          // Millage
                                           .car-spec-field
                                             span.spec-icon.mr-2
-                                              i.fas.fa-road
-                                            span= vehicle.overview.millage
-                                          // Engine size
+                                              img(src="/images/mileage.svg" alt="")
+                                            span= vehicle.overview.mileage
                                           .car-spec-field
                                             span.spec-icon.mr-2
-                                              i.icon.icon-engine.mr-2
+                                              img(src="/images/engine-default.svg" alt="")
                                             span= vehicle.overview.engineSize
-                                    .col
-                                      .test-right.car-offer
+                                    .col 
+                                      .test-right.car-offer 
                                         .car-price 
                                           span= `KSH ${vehicle.price}`
-                                        .car-price-duty
-                                          span= vehicle.overview.dutyType
-                                  //
-                                    <div class="group-button">
-                                    <div
-                                    class="d-flex text-center align-items-center justify-content-center btn-view-detail">
-                                    <i class="fas fa-car"></i>
-                                    <div class="detail text-center ml-3">
-                                    <span>View Details</span>
-                                    </div>
-                                    </div>
-                                    </div>
-    
-  
-  
-  
-  
-  
-  
+                                        .car-price-duty 
+                                          span= `Duty ${vehicle.overview.dutyType}`

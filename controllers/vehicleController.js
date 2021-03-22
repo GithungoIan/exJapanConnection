@@ -5,19 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactroy');
 const AppError = require('../utils/appError');
 
-
 const multerStorage = multer.memoryStorage();
-
-// const multerStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'public/images/vehicles');
-//   },
-//   filename: (req, file, cb) => {
-//     const uniqueSuffix =  Math.round(Math.random() * 1E5);
-//     const ext = file.mimetype.split('/')[1];
-//     cb (null, `vehicle-cover-${uniqueSuffix}-${Date.now()}.${ext}`);
-//   }
-// });
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
@@ -32,7 +20,6 @@ const upload = multer({
   fileFilter: multerFilter
 });
 
-// exports.uploadVehicleImage = upload.single('imageCover');
 exports.uploadVehicleImages = upload.fields([
   {name: 'imageCover', maxCount: 1},
   {name: 'images', maxCount: 8}
@@ -45,6 +32,7 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
   const uniqueSuffix =  Math.round(Math.random() * 1E5);
   req.body.imageCover = `vehicle-${uniqueSuffix}-${Date.now()}-cover.jpeg`;
   await sharp(req.files.imageCover[0].buffer)
+    .resize(350, 200)
     .toFormat('jpeg')
     .jpeg({quality: 90})
     .toFile(`public/images/vehicles/${req.body.imageCover}`);
@@ -58,8 +46,8 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
       const uniqueSuffix =  Math.round(Math.random() * 1E5);
       const filename = `vehicle-${uniqueSuffix}-${Date.now()}-${i + 1}.jpeg`;
 
-
       await sharp(file.buffer)
+        .resize(800, 600)
         .toFormat('jpeg')
         .jpeg({quality: 90})
         .toFile(`public/images/vehicles/${filename}`);

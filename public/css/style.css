@@ -995,7 +995,7 @@ ul.pagination .page-item.active .page-link {
   line-height: 2.5rem;
 }
 
-.search-page-container .main-list .main-content .car-list-items .car-spec-field span.spec-icon i.fas {
+.search-page-container .main-list .main-content .car-list-items .car-spec-field span.spec-icon img {
   width: 20px;
   display: inline-block;
 }
