@@ -69,10 +69,10 @@ vehicleSchema.virtual('comments', {
 });
 
 // QUERY MIDDLEWARE: RUN  BEFORE SAVE() AND CREATE()
-vehicleSchema.pre(/^find/, function(next) {
-  this.find({featuredVehicle: {$ne: true}});
-  next();
-});
+// vehicleSchema.pre(/^find/, function(next) {
+//   this.find({featuredVehicle: {$ne: true}});
+//   next();
+// });
 
 vehicleSchema.pre('save', function(next) {
   this.slug = slugify(`${this.make}-${this.model}`, {lower: true});

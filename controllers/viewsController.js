@@ -30,10 +30,14 @@ exports.getVehicle = catchAsync(async (req, res, next) => {
 });
 
 exports.landing = catchAsync(async(req, res, next) => {
-  const featuredVehicles = await Vehicle.find({featuredVehicle: {$ne: false}});
+  const featuredVehicles = await Vehicle.find({featuredVehicle: {$ne : false}});
+  
+  if(!featuredVehicles){
+    return next(new AppError('There are no featured vehicles at the moment', 404));
+  }
 
   res.status(200).render('landing',{
-    title: 'ExJpLimited',
+    title: 'Get new and used japan vehicles ',
     featuredVehicles
   })
 });

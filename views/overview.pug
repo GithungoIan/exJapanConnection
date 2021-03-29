@@ -1,179 +1,108 @@
-extends base
-
-block append head 
-  link(rel='stylesheet' href='/css/main.css')
-  link(rel='stylesheet' href='/css/utilities.css')
-    
+extends base    
 block content
-  #__next
-    section.position-relative.d-flex.flex-column.my-3(style="min-height: 100vh; overflow: hidden;")
-        #main-page-wrapper.main-page-wrapper.flex-fill
-          .container.search-page-container
-            .row
-              .col-lg-3.col-md-12
-                .left-side-filter
-                  .desktop-show
-                    .filter-box.filter-desktop.common-filter
-                      h2.box-header.strong
-                        | Filter By
-                        span.clear-all Clear All
-                      form.mt-4
-                        // Make
-                        .select-field-container.form-group.has-value
-                          // Make Name
-                          .toggle-header.d-flex.justify-content-between
-                            span.input-value Mazda
-                            i.fas.fa-sort-down
-                          // Drop down
-                          .options-list.scroll.scroll-y.collapse
-                            .section-item
-                              | Toyota
-                              span.doc-count
-                                | (
-                                | 1200
-                                | )
-                            .section-item
-                              | NIssan
-                              span.doc-count
-                                | (
-                                | 1000
-                                | )
-                            .section-item
-                              | Suzuki
-                              span.doc-count
-                                | (
-                                | 1100
-                                | )
-                        // Model
-                        .select-field-container.form-group.has-value
-                          // Model Name
-                          .toggle-header.d-flex.justify-content-between
-                            span.input-value Roadster
-                            i.fas.fa-sort-down
-                          // Model drop down
-                          .options-list.scroll.scroll-y.collapse
-                            .section-item
-                              | Demio
-                              span.doc-count
-                                | (
-                                | 500
-                                | )
-                            .section-item
-                              | CX-5
-                              span.doc-count
-                                | (
-                                | 200
-                                | )
-                        // Year
-                        .select-field-container.form-group.undefined
-                          .toggle-header.d-flex.justify-content-between.false
-                            | Year
-                            i.fas.fa-sort-down
-                          .options-list.multiple-select.collapse
-                            .p-3
-                              .select-raw-container.form-group
-                                select(name="minYear")
-                                  option(value="") Min Year
-                                  option(value="2020") 2020
-                                  option(value="2019") 2019
-                                  option(value="2018") 2018
-                                  option(value="2017") 2017
-                                  option(value="2016") 2016
-                                  option(value="2015") 2015
-                                  option(value="2014") 2014
-                                  option(value="2013") 2013
-                                  option(value="2012") 2012
-                                  option(value="2011") 2011
-                              .select-raw-container.form-group
-                                select(name="maxYear")
-                                  option(value="") Max Year
-                                  option(value="2020") 2020
-                                  option(value="2019") 2019
-                                  option(value="2018") 2018
-                                  option(value="2017") 2017
-                                  option(value="2016") 2016
-                                  option(value="2015") 2015
-                                  option(value="2014") 2014
-                                  option(value="2013") 2013
-                                  option(value="2012") 2012
-                                  option(value="2011") 2011
-                        // Price
-                        .select-field-container.form-group.undefined
-                          .toggle-header.d-flex.justify-content-between.false
-                            | Price
-                            i.fas.fa-sort-down
-                          .options-list.multiple-select.collapse.show
-                            .p-3
-                              .select-raw-container.form-group
-                                select(name="minPrice")
-                                  option(value="") Min Price
-                                  option(value="100000") 100,000 Ksh
-                                  option(value="300000") 300,000 Ksh
-                                  option(value="500000") 500,000 Ksh
-                                  option(value="700000") 700,000 Ksh
-                                  option(value="1000000") 1 million Ksh
-                                  option(value="1200000") 1.2 million Ksh
-                                  option(value="1500000") 1.5 million Ksh
-                                  option(value="1700000") 1.7 million Ksh
-                              .select-raw-container.form-group
-                                select(name="maxPrice")
-                                  option(value="") Max Price
-                                  option(value="100000") 100,000 Ksh
-                                  option(value="300000") 300,000 Ksh
-                                  option(value="500000") 500,000 Ksh
-                                  option(value="700000") 700,000 Ksh
-                                  option(value="1000000") 1 million Ksh
-                                  option(value="1200000") 1.2 million Ksh
-                                  option(value="1500000") 1.5 million Ksh
-                                  option(value="1700000") 1.7 million Ksh
-                        // Filter Btn
-                        div
-                          button.btn.btn-block.btn-primary
-                            strong Filter
-                            
-              .col-lg-9.col-md-12
-                .main-list 
-                  .main-content
-                    .car-list-items
-                      each vehicle in vehicles
-                        .list__vehicle-card 
-                          .car-item-row
-                            .row 
-                              .p-r-o.col-lg-4.col-md-12
-                                .car-image-wrapper 
-                                  .img-item
-                                    .img-item-inner(style= `background-image: url(images/vehicles/${vehicle.imageCover})`)
-                                  span.image-count
-                                    span= vehicle.images.length
-                                    i.fas.fa-camera.ml-2
-                              .col-lg-8.col-md-12
-                                .car-info
-                                  a.link(href=`/vehicle/${vehicle.slug}`)
-                                    h3.strong=`${vehicle.make} ${vehicle.model} ${vehicle.overview.year}`
-                                  .row.row 
-                                    .col 
-                                      .row 
-                                        .col-md-6.col-sm-6.col-12
-                                          .car-spec-field
-                                            span.spec-icon.mr-2
-                                              img(src="/images/fuel.svg" alt="")
-                                            span= vehicle.overview.Fuel
-                                          .car-spec-field
-                                            span.spec-icon.mr-2
-                                              img(src="/images/gearbox.svg" alt="")
-                                            span= vehicle.overview.transmission
-                                        .col-md-6.col-sm-6.col-12
-                                          .car-spec-field
-                                            span.spec-icon.mr-2
-                                              img(src="/images/mileage.svg" alt="")
-                                            span= vehicle.overview.mileage
-                                          .car-spec-field
-                                            span.spec-icon.mr-2
-                                              img(src="/images/engine-default.svg" alt="")
-                                            span= vehicle.overview.engineSize
-                                    .col 
-                                      .test-right.car-offer 
-                                        .car-price 
-                                          span= `KSH ${vehicle.price}`
-                                        .car-price-duty 
-                                          span= `Duty ${vehicle.overview.dutyType}`
+  section.position-relative.d-flex.flex-column.my-3(style='min-height: 100vh; overflow: hidden;')
+    .search-vehicles.my-2
+      .container.search-page-container
+        .row
+          .col-lg-3.col-md-12
+            .left-side-filter
+              .filter-box
+                .search-vehicles-form.card
+                  h2.box-header.sm
+                    | Filter by
+                    span.clear-all.m-1 Clear all
+                  form.grid
+                    .form-control
+                      label.hidden(for='make')
+                      select#make(name='make')
+                        option(value='') All Makes
+                        option(value='mazda') Mazda
+                        option(value='Toyota') Toyota
+                        option(value='Nissan') Nissan
+                        option(value='BMW') BMW
+                        option(value='Ford') Ford
+                        option(value='Volkswagen') Volkswagen
+                    .form-control
+                      label.hidden(for='model')
+                      select#model(name='model')
+                        option(value='') All Models
+                    .form-control
+                      label.hidden(for='minPrice')
+                      select#minPrice(name='minPrice')
+                        option(value='') minPrice
+                        option(value='300000') 300000
+                        option(value='400000') 400000
+                        option(value='500000') 500000
+                        option(value='600000') 600000
+                        option(value='700000') 700000
+                        option(value='800000') 800000
+                        option(value='900000') 900000
+                        option(value='1000000') 1000000
+                        option(value='1100000') 1100000
+                    .form-control
+                      label.hidden(for='maxPrice')
+                      select#maxPrice(name='maxPrice')
+                        option(value='') maxPrice
+                        option(value='300000') 300000
+                        option(value='400000') 400000
+                        option(value='500000') 500000
+                        option(value='600000') 600000
+                        option(value='700000') 700000
+                        option(value='800000') 800000
+                        option(value='900000') 900000
+                        option(value='1000000') 1000000
+                        option(value='1100000') 1100000
+                    input.btn.btn-primary(type='submit' value='Search')
+          .col-lg-9.col-md-12
+            .main-list
+              .main-content
+                .car-list-items
+                  each vehicle in vehicles
+                    .list__vehicle-card
+                      .car-item-row
+                        .row
+                          .p-r-o.col-lg-4.col-md-12
+                            .car-image-wrapper
+                              .img-item
+                                .img-item-inner(style=`background-image: url(images/vehicles/${vehicle.imageCover})`)
+                              span.image-count
+                                span= vehicle.images.length
+                                i.fas.fa-camera.ml-2
+                          .col-lg-8.col-md-12
+                            .car-info
+                              a.link(href=`/vehicle/${vehicle.slug}`)
+                                h3.strong.text-secondary=`${vehicle.make} ${vehicle.model} ${vehicle.overview.year}`
+                              .row.row
+                                .col
+                                  .row
+                                    .col-md-6.col-sm-6.col-12
+                                      .car-spec-field
+                                        span.spec-icon.mr-2
+                                          img(src='/images/fuel.svg' alt='fuel svg')
+                                        span= vehicle.overview.Fuel
+                                      .car-spec-field
+                                        span.spec-icon.mr-2
+                                          img(src='/images/gearbox.svg' alt='gearbox svg')
+                                        span= vehicle.overview.transmission
+                                      .car-spec-field
+                                        span.spec-icon.mr-2
+                                          img(src='/images/year.svg' alt='')
+                                        span= vehicle.overview.year
+                                    .col-md-6.col-sm-6.col-12
+                                      .car-spec-field
+                                        span.spec-icon.mr-2
+                                          img(src='/images/mileage.svg' alt='')
+                                        span= vehicle.overview.mileage
+                                      .car-spec-field 
+                                        span.spec-icon.mr-2
+                                          img(src='/images/engine-default.svg' alt='')
+                                        span= vehicle.overview.engineSize
+                                      
+                                .col
+                                  .test-right.car-offer
+                                    .car-price
+                                      span= `KSH ${vehicle.price}`
+                                    .details
+                                      a.link(href=`/vehicle/${vehicle.slug}`) 
+                                        button.btn.btn-primary view details
+

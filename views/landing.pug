@@ -1,71 +1,111 @@
 extends base
 block content
-  section.hero
-    .container.grid 
-      .hero-text
-        h1 ExJpLimited
-        p xJpLimited Is the number one stop shop for all your car imports and sales we import vehicles from japan at a very customer friendly price
-        a.btn.btn-outline(href='about') Read More 
-      .hero-image
-        img(src='images/hero-image.png' alt='hero image')
-  
-  section.vehicles
+  section.search-vehicle
     .container
-      h2.md.text-center.my-2 Featured Vehicles 
-      .grid.grid-3.text-center.my-4
-        //- each vehicle in vehicles 
-          .vehice
-            //- img(src=`images/vehicles/${vehicle.imageCover}` alt=``)
-            //- h3= vehice.name
-            p
-  section.stats 
+      .search-vehicle-form.card
+        h2 Search for your vehicle
+        form.grid
+          .form-control
+            label.hidden(for='make')
+            select#make(name='make')
+              option(value='') All Makes
+              option(value='mazda') Mazda
+              option(value='Toyota') Toyota
+              option(value='Nissan') Nissan
+              option(value='BMW') BMW
+              option(value='Ford') Ford
+              option(value='Volkswagen') Volkswagen
+          .form-control
+            label.hidden(for='model')
+            select#model(name='model')
+              option(value='') All Models
+          .form-control
+            label.hidden(for='minPrice')
+            select#minPrice(name='minPrice')
+              option(value='') minPrice
+              option(value='300000') 300000
+              option(value='400000') 400000
+              option(value='500000') 500000
+              option(value='600000') 600000
+              option(value='700000') 700000
+              option(value='800000') 800000
+              option(value='900000') 900000
+              option(value='1000000') 1000000
+              option(value='1100000') 1100000
+          .form-control
+            label.hidden(for='maxPrice')
+            select#maxPrice(name='maxPrice')
+              option(value='') maxPrice
+              option(value='300000') 300000
+              option(value='400000') 400000
+              option(value='500000') 500000
+              option(value='600000') 600000
+              option(value='700000') 700000
+              option(value='800000') 800000
+              option(value='900000') 900000
+              option(value='1000000') 1000000
+              option(value='1100000') 1100000
+          input.btn.btn-primary(type='submit' value='Search')
+
+  section.featured-vehicle.my-2
+    h3.lg.text-center.my-1
+      | Featured Vehicles
     .container
-      h3.stats-heading.text-center.my-1 What ExJpLimited Has to Offer 
+      .grid.grid-4.text-center.my-1
+        each vehicle in featuredVehicles
+          .vehicle-card
+            a(href=`/vehicle/${vehicle.slug}`)
+              img(src=`images/vehicles/${vehicle.imageCover}` alt='')
+              .grid-info
+                .featured-name
+                  h4= `${vehicle.overview.year} ${vehicle.make} ${vehicle.model}`
+                .featured-price
+                  span= `KSH ${vehicle.price}`
+                .featured-mileage
+                  span= `Mileage: ${vehicle.overview.mileage}`
+                .featured-year.sm
+                  span= `Year: ${vehicle.overview.year}`
+    h3.text-center
+      span
+        a.text-primary.featured-see--more(href='/overview') see all cars
+
+  section.services
+    .container
+      h2.md.text-center.my-1
+        | Services Offered
       .grid.grid-3.text-center.my-4
-        .icons
-          i.fas.fa-car-side.fa-5x
-          h3 10000
-          p.text-secondary Vehicles Imported 
-        .icons
-          i.fas.fa-handshake.fa-5x
-          h3 Increasing
-          p.text-secondary Patners
-        .icons 
-          i.fas.fa-users.fa-5x
-          h3 2000
-          p.text-secondary Satisfied Customers
-        
-  section.sales.bg-primary.my-2.py-2 
-    .container.grid 
-      .text-center 
-        h2.md Easy imports and fast tracked duty payment process
-        p.lead.my-1 ExJpLimited is the best and the fastest car importers from japan with good payment plans and discounts for our loyal customers
-        a.btn.btn-dark(href='/imports') Read More
-        
+        div
+          i.fas.ta-server.fa-3x
+          p We have quality and asured vehicles 
+        div
+          i.fas.ta-server.fa-3x
+          p Streamlined vehicle importation process
+        div
+          i.fas.ta-server.fa-3x
+          p Vehicle inspection and quality assuarance 
+
   section.brands
-    h2.md.text-center.my-2 Featured Brands 
+    h2.md.text-center.my-2
+      | Popular Brands
     .container.flex
       .card
-        h3 BMW
-        img(src='images/logos/bmw.png' alt='bmw')
+        h4 BMW
+        img(src='images/logos/bmw.png' alt='')
       .card
-        h3 HONDA
-        img(src='images/logos/honda.png' alt='honda')
+        h4 Lexus
+        img(src='images/logos/lexus.png' alt='')
       .card
-        h3 LEXUS
-        img(src='images/logos/lexus.png' alt='lexus')
+        h4 Mazda
+        img(src='images/logos/mazda.png' alt='')
       .card
-        h3 MAZDA
-        img(src='images/logos/mazda.png' alt='mazda')
+        h4 Mitsubishi
+        img(src='images/logos/mitsubishi.png' alt='')
       .card
-        h3 VOLKSWAGEN
-        img(src='images/logos/volkswagen.png' alt='volkswagen')
+        h4 Toyota
+        img(src='images/logos/toyota.png' alt='')
       .card
-        h3 SUBARU
-        img(src='images/logos/subaru.png' alt='subaru')
-      .card
-        h3 MITSUBISHI
-        img(src='images/logos/mitsubishi.png' alt='mitsubishi')
-      .card
-        h3 SUZUKI
-        img(src='images/logos/suzuki.png' alt='suzuki')                  
+        h4 Volkswagen
+        img(src='images/logos/volkswagen.png' alt='')
+    h3.text-center.m-1
+      span
+        a.text-primary.featured-see--more(href='/brands') see all brands                 
