@@ -1,0 +1,45 @@
+extends base 
+block content
+  section.contact-head.bg-primary.py-3
+    .container.grid
+      div
+        h1.xl Contact Us
+        p.lead For any issues or inquiries don't hestitate to contact us 
+
+  section.contact-main.my-4
+    .container.grid
+      .car.bg-light.p-3
+        h2.my-1 Japan
+        nav
+          ul
+            li ExJpLimited
+            li 1241-1 matomurago
+            li 851-2103 Nagasaki japan
+            li Tel: +818092400429
+            li Email: info@exjpconnect.com
+        h2.my-1 Kenya
+        nav
+          ul
+            li CARFANGA DEALERSHIP
+            li P.O BOX 7472-00100
+            li NAIROBI, KENYA
+            li MOKTAR DADDAHST
+            li VALJI BUILDING
+            li 1ST FLOOR RM 103
+            li Tel: +254792438349
+      .contact-form.card
+        h2.text-center CONTACT FORM
+        form.form-contact
+          .form-control
+            label(for='contact-name')
+            input#contact-name(type='text' name='Name' placeholder='Name')
+          .form-control
+            label(for='contact-phoneNumber')
+            input#contact-phoneNumber(type='text' name='phoneNumber' placeholder='Phone Number')
+          .form-control
+            label(for='contact-email')
+            input#contact-email(type='email' name='email' placeholder='Email address')
+          .form-control
+            label(for='contact-description')
+            textarea#contact-description.my-1(name='description' rows='8' cols='80' placeholder='your message')
+          input.btn.btn-primary(type='submit' value='submit')
