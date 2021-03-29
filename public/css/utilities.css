@@ -1,31 +1,31 @@
-/* utilities */
-/* container */
-@media (min-width:1200px) {
-  .container {
-    max-width: 1170px;
-    margin: 0 auto;
-  }
-}
 
+/* Utilities */
 .container {
-  padding-left: 10px;
-  padding-right: 10px;
+  max-width: 1170px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0 40px;
 }
 
-
-.card {
+.card{
   background-color: #fff;
   color: #333;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 10px rgba(0,0,0, .2);
   padding: 20px;
   margin: 10px;
 }
-
-.shadow{
+.about-card {
   background-color: #fff;
+  color: #333;
   border-radius: 3px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 10px rgba(0,0,0, .1);
+}
+
+.vehicle-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0, .1);
 }
 
 .btn {
@@ -33,7 +33,7 @@
   padding: 10px 30px;
   cursor: pointer;
   background: var(--primary-color);
-  color: #fFF;
+  color: #fff;
   border: none;
   border-radius: 5px;
 }
@@ -44,10 +44,10 @@
 }
 
 .btn:hover {
-  transform: scale(0.98)
+  transform: scale(0.98);
 }
 
-/* Backgrounds & colored buttons */
+/* background & colored Buttons */
 .bg-primary,
 .btn-primary {
   background-color: var(--primary-color);
@@ -72,44 +72,93 @@
   color: #333;
 }
 
-.bg-primary a,
-.btn-primary a,
+.bg-dark a,
+.btn-dark a,
 .bg-secondary a,
 .btn-secondary a,
-.bg-dark a,
-.btn-dark a {
-  color: #fff;
+.bg-primary a,
+.btn-primary a{
+  color: #fff
 }
 
-/* Text Sizes */
+
+/* Text Colors */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-dark {
+  color: var(--dark-color);
+}
+
+.text-light {
+  color: var(--light-color);
+}
+
+
+/* Text sizes */
 .lead {
   font-size: 20px;
 }
 
-.sm{
+.sm {
   font-size: 1rem;
 }
 
-.md{
+.md {
   font-size: 2rem;
 }
 
-.lg{
-  font-size: 2.5rem;
+.lg {
+  font-size: 3rem;
 }
 
 .xl {
   font-size: 4rem;
 }
 
-.text-center {
+.text-center{
   text-align: center
 }
+
+/* Alert */
+.alert {
+  background-color: var(--light-color);
+  padding: 10px 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.alert i {
+  margin-right: 10px;
+}
+
+.alert-success {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+.alert-danger {
+  background-color: var(--error-color);
+  color: #fff;
+}
+
 
 .flex {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+}
+
+.grid-info{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
   height: 100%;
 }
 
@@ -122,191 +171,80 @@
   height: 100%;
 }
 
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-3 {
+.grid-3{
   grid-template-columns: repeat(3, 1fr);
 }
-.grid-4 {
+
+.grid-4{
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* Margin */
 
-.my-1 {
+/* Margin */
+.my-1{
   margin: 1rem 0;
 }
-
-.my-2 {
+.my-2{
   margin: 1.5rem 0;
 }
-
-.my-3 {
+.my-3{
   margin: 2rem 0;
 }
-
-.my-4 {
+.my-4{
   margin: 3rem 0;
 }
-
-.my-5 {
+.my-5{
   margin: 4rem 0;
 }
 
 
-.m-1 {
+.m-1{
   margin: 1rem;
 }
-
-.m-2 {
+.m-2{
   margin: 1.5rem;
 }
-
-.m-3 {
+.m-3{
   margin: 2rem;
 }
-
-.m-4 {
+.m-4{
   margin: 3rem;
 }
-
-.m-5 {
+.m-5{
   margin: 4rem;
 }
 
 
-
 /* Padding */
-
-.py-1 {
+.py-1{
   padding: 1rem 0;
 }
-
-.py-2 {
+.py-2{
   padding: 1.5rem 0;
 }
-
-.py-3 {
+.py-3{
   padding: 2rem 0;
 }
-
-.py-4 {
+.py-4{
   padding: 3rem 0;
 }
-
-.py-5 {
+.py-5{
   padding: 4rem 0;
 }
 
 
-.p-1 {
+.p-1{
   padding: 1rem;
 }
-
-.p-2 {
+.p-2{
   padding: 1.5rem;
 }
-
-.p-3 {
+.p-3{
   padding: 2rem;
 }
-
-.p-4 {
+.p-4{
   padding: 3rem;
 }
-
-.p-5 {
+.p-5{
   padding: 4rem;
-}
-
-/* margins */
-.mr-2 {
-  margin-right: .5rem !important;
-}
-
-.ml-2 {
-  margin-left: .5rem !important;
-}
-
-
-.mt-3 {
-  margin-top: 1rem !important;
-}
-
-.mr-3 {
-  margin-right: 1rem !important;
-}
-
-.ml-3 {
-  margin-left: 1rem !important;
-}
-
-.mt-4 {
-  margin-top: 1.5rem !important;
-}
-
-.mt-5 {
-  margin-top: 3rem !important;
-}
-
-/* padding */
-.p-3 {
-  padding: 1rem !important;
-}
-
-/* text */
-.text-right {
-  text-align: right !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-/* icons */
-.icon-automatic {
-  background-image: url(../images/vehicle-icons.png);
-  background-position: -282px -130px;
-  width: 14px;
-  height: 14px;
-}
-
-.icon-engine {
-  background-image: url(../images/vehicle-icons.png);
-}
-
-.icon-engine {
-  background-position: -250px -130px;
-  width: 16px;
-  height: 16px;
-}
-
-.icon-racing {
-  background-image: url(../images/vehicle-icons.png);
-}
-
-.icon-racing {
-  background-position: -266px -130px;
-  width: 16px;
-  height: 14px;
-}
-
-@media (-webkit-min-device-pixel-ratio:2),
-(min-resolution:192dpi) {
-
-  .icon-automatic,
-  .icon-engine,
-  .icon-racing {
-    background-image: url(../images/vehicle-icons.png);
-    background-size: 375px 195px;
-  }
-}
-
-.btn,
-.form-control {
-  font-size: 1.4rem;
-  line-height: 2rem;
-  height: 40px;
 }
