@@ -9,5 +9,9 @@ We are currently using.
     npm start -> development
     npm start:prod -> production 
     
+    npm start:dev -> development
+    npm write:js
+    npm build:js
+    
 
     
