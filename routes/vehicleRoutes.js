@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.use('/:tourId/comments', commentRouter);
 
+router.route('/makes').get(vehicleController.getAllMakes);
 
 router.
 	route('/')
