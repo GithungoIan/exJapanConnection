@@ -58,6 +58,22 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
   next();
 });
 
+exports.getAllMakes = catchAsync(async (req, res, next) => {
+  const makes = await Vehicle.find({}, {make: 1});
+  
+  if(!makes) {
+    return next(new AppError('No makes found', 404));
+  }
+  
+  res.status(200).json({
+    status: 'success',
+    results: makes.length,
+    data: {
+      data: makes
+    }
+  })
+  
+})
 
 exports.getAllVehicles = factory.getAll(Vehicle);
 exports.getVehicle = factory.getOne(Vehicle);
