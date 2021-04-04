@@ -47,7 +47,7 @@
     "xss-clean": "^0.1.1"
   },
   "engines": {
-    "node": "12.16.2"
+    "node": ">=10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
