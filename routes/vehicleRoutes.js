@@ -6,11 +6,18 @@ const router = express.Router();
 
 router.use('/:tourId/comments', commentRouter);
 
+router.route('/makes').get(vehicleController.getAllMakes);
+router.route('/models').get(vehicleController.getAllModels);
+router.route('/makesStats').get(vehicleController.getMakeStats);
+router.route('/modelsStats').get(vehicleController.getModelStats);
 
 router.
 	route('/')
 	.get(vehicleController.getAllVehicles)
-	.post(vehicleController.postVehicle);
+	.post(
+		vehicleController.uploadVehicleImages,
+		vehicleController.resizeVehicleImages,
+		vehicleController.postVehicle);
 
 router
 	.route('/:id')

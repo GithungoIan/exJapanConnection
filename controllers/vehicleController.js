@@ -58,6 +58,82 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
   next();
 });
 
+exports.getAllMakes = catchAsync(async (req, res, next) => {
+  const makes = await Vehicle.find({}, {make: 1});
+  
+  if(!makes) {
+    return next(new AppError('No makes found', 404));
+  }
+  
+  res.status(200).json({
+    status: 'success',
+    results: makes.length,
+    data: {
+      data: makes
+    }
+  });
+})
+
+
+exports.getAllModels = catchAsync(async (req, res, next) =>{
+  const models = await Vehicle.find({}, {model: 1});
+  
+  if(!models){
+    return next(new AppError('No models found', 404));
+  }
+  
+  res.status(200).json({
+    status: 'success',
+    results: models.length,
+    data: {
+      data: models
+    }
+  });
+});
+
+const getMakes = async() =>{
+   const makes = await Vehicle.aggregate([
+    { "$group": {_id: "$make", count: {$sum: 1}}}
+  ]);
+  console.log(makes);
+  return makes;
+}
+
+const getModels = async(model) => {
+  const makes = await Vehicle.aggregate([
+    { "$group": {_id: "$make", count: {$sum: 1}}}
+  ]);
+  console.log(makes);
+  return makes;
+}
+
+exports.getMakeStats = catchAsync(async (req, res, next) => {
+  const makes = await Vehicle.aggregate([
+    { "$group": {_id: "$make", count: {$sum: 1}}}
+  ]);
+  
+  // const makes = getMakes;
+  
+  res.status(200).json({
+    status: 'success',
+    data: {
+      makes
+    }
+  });
+})
+
+exports.getModelStats = catchAsync(async (req, res, next) => {
+  const models = await Vehicle.aggregate([
+    { "$group": {_id: "$model", count: {$sum: 1}}}
+  ]);
+  
+  res.status(200).json({
+    status: 'success',
+    data: {
+      models
+    }
+  });
+})
 
 exports.getAllVehicles = factory.getAll(Vehicle);
 exports.getVehicle = factory.getOne(Vehicle);
