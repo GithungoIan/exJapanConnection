@@ -214,6 +214,9 @@
   margin: 4rem;
 }
 
+.mr-2 {
+    margin-right: .5rem !important;
+}
 
 /* Padding */
 .py-1{
