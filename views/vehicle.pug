@@ -1,11 +1,15 @@
-extends base    
+extends base
+block append head
+  link(rel='stylesheet' href='/css/utilities.css')
+  link(rel='stylesheet' href='/css/detailV.css')
+ 
 block content
-  section.position-relative.d-flex.flex-column
-    // breadcrumbs
+  section.position-relative.d-flex.flex-column.my-3(style='min-height: 100vh; overflow: hidden;')
+    
     .main-page-wrapper
       .breadcrumbs
         .container
-      // title
+      
       .listing-top
         .container
           .row
@@ -13,11 +17,11 @@ block content
               .listing-title.p-2= `${vehicle.overview.year} ${vehicle.make} ${vehicle.model} For Sale`
             .col-lg
               .listing-price.p-2= `KSH ${vehicle.price}` 
-      // details
+      
       .listing-details
         .container.detail-page-container
           .row
-            // detail section
+            
             .col-lg-8.content
               .listing-content
                 .listing-gallery
@@ -50,50 +54,50 @@ block content
                       .overview-warapper
                         ul.overview-list
                           li.vehicle-key-info-list__item.p-2
-                            // model year
+                            
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/year.svg" alt="")
-                                // year
+                                
                               div
                                 span= vehicle.overview.year
                           li.vehicle-key-info-list__item.p-2
-                            // Fuel type
+                            
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/fuel.svg" alt="")
                               div
                                 span= vehicle.overview.Fuel
                           li.vehicle-key-info-list__item.p-2
-                            // Engine size
+                            
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/engine-default.svg" alt="")
-                                // Engine
+                                
                               div
                                 span= `${vehicle.overview.engineSize} cc`
                           li.vehicle-key-info-list__item.p-2
-                            // vehicle transmission
+                            
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/gearbox.svg" alt="")
-                                // transmission
+                                
                               div
                                 span= vehicle.overview.transmission
                           li.vehicle-key-info-list__item.p-2
-                            // vehicle seats
+                            
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/comfort-default.svg" alt="")
-                                // seats
+                                
                               div
                                 span 5 seats
                           li.vehicle-key-info-list__item.p-2
-                            // vehicle millage
+                            
                             .car-spec-field
                               span.spec-icon.mr-2
                                 img(src="/images/mileage.svg" alt="")
-                                // mileage
+                                
                               div
                                 span= `${vehicle.overview.mileage} Km`
                   .features
@@ -111,7 +115,7 @@ block content
                                 div
                                   span= feature
                           
-            // contact section
+            
             .col-lg-4.sidebar
               .listing-sidebar
                 div
