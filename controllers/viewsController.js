@@ -6,12 +6,20 @@ const AppError = require('../utils/appError');
 exports.getOverview =  catchAsync(async(req, res, next) => {
   // 1) Get vehicles data from collection
   const vehicles = await Vehicle.find();
+  const makes = await Vehicle.aggregate([
+    { "$group": {_id: "$make", count: {$sum: 1}}}
+  ]);
+  const models = await Vehicle.aggregate([
+    { "$group": {_id: "$model", count: {$sum: 1}}}
+  ]);
 
   // 2) Build Template
   // 3) Render the template with data from 1
   res.status(200).render('overview', {
     title: 'vehicles',
-    vehicles
+    vehicles,
+    makes,
+    models
   });
 });
 
@@ -31,14 +39,22 @@ exports.getVehicle = catchAsync(async (req, res, next) => {
 
 exports.landing = catchAsync(async(req, res, next) => {
   const featuredVehicles = await Vehicle.find({featuredVehicle: {$ne : false}});
-  
+  const makes = await Vehicle.aggregate([
+    { "$group": {_id: "$make", count: {$sum: 1}}}
+  ]);
+  const models = await Vehicle.aggregate([
+    { "$group": {_id: "$model", count: {$sum: 1}}}
+  ]);
+
   if(!featuredVehicles){
     return next(new AppError('There are no featured vehicles at the moment', 404));
   }
 
   res.status(200).render('landing',{
     title: 'Get new and used japan vehicles ',
-    featuredVehicles
+    featuredVehicles,
+    makes,
+    models
   })
 });
 

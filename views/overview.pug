@@ -16,42 +16,30 @@ block content
                       label.hidden(for='make')
                       select#make(name='make')
                         option(value='') All Makes
-                        option(value='mazda') Mazda
-                        option(value='Toyota') Toyota
-                        option(value='Nissan') Nissan
-                        option(value='BMW') BMW
-                        option(value='Ford') Ford
-                        option(value='Volkswagen') Volkswagen
+                        each make in makes
+                          option(value=`${make._id}`)= `${make._id } (${make.count})`
+                        
                     .form-control
                       label.hidden(for='model')
                       select#model(name='model')
                         option(value='') All Models
+                        each model in models
+                          option(value=`${model._id}`)= `${model._id } (${model.count})`
+                          
+                    - const prices = [300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1100000]
                     .form-control
                       label.hidden(for='minPrice')
                       select#minPrice(name='minPrice')
                         option(value='') minPrice
-                        option(value='300000') 300000
-                        option(value='400000') 400000
-                        option(value='500000') 500000
-                        option(value='600000') 600000
-                        option(value='700000') 700000
-                        option(value='800000') 800000
-                        option(value='900000') 900000
-                        option(value='1000000') 1000000
-                        option(value='1100000') 1100000
+                        each price in prices
+                          option(value=`${price}`)= `${price}`
                     .form-control
                       label.hidden(for='maxPrice')
                       select#maxPrice(name='maxPrice')
                         option(value='') maxPrice
-                        option(value='300000') 300000
-                        option(value='400000') 400000
-                        option(value='500000') 500000
-                        option(value='600000') 600000
-                        option(value='700000') 700000
-                        option(value='800000') 800000
-                        option(value='900000') 900000
-                        option(value='1000000') 1000000
-                        option(value='1100000') 1100000
+                        each price in prices
+                          option(value=`${price}`)= `${price}`
+                        
                     input.btn.btn-primary(type='submit' value='Search')
           .col-lg-9.col-md-12
             .main-list
@@ -105,4 +93,3 @@ block content
                                     .details
                                       a.link(href=`/vehicle/${vehicle.slug}`) 
                                         button.btn.btn-primary view details
-
