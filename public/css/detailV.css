@@ -132,7 +132,7 @@ h5 {
 }
 
 .carousel__button img {
-  width: 50px;
+  width: 60px;
   /* color: #fff; */
 }
 
@@ -229,6 +229,18 @@ col,
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
+  }
+  .carousel__image {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .col-lg-8.content .listing-content{
+    padding: 0;
+    margin: 0;
+  }
+  .detail-view .container {
+    padding: 10px;
   }
 }
 
@@ -398,4 +410,15 @@ textarea {
 
 .contact-form .e-input.m-has-min-height {
   min-height: 150px;
+}
+
+/* Footer */
+.footer .social a {
+  margin: 0 10px;
+}
+
+
+@media (max-width: 768px) {}
+@media (max-width: 500px) {
+
 }

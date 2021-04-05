@@ -2,9 +2,10 @@ extends base
 block append head
   link(rel='stylesheet' href='/css/utilities.css')
   link(rel='stylesheet' href='/css/detailV.css')
+  link(rel='stylesheet' href='/css/style.css')
  
 block content
-  section.position-relative.d-flex.flex-column.my-3(style='min-height: 100vh; overflow: hidden;')
+  section.detail-view.position-relative.d-flex.flex-column.my-2(style='min-height: 100vh; overflow: hidden;')
     
     .main-page-wrapper
       .breadcrumbs
@@ -14,9 +15,9 @@ block content
         .container
           .row
             .col-lg-5
-              .listing-title.p-2= `${vehicle.overview.year} ${vehicle.make} ${vehicle.model} For Sale`
+              .listing-title.p-1= `${vehicle.overview.year} ${vehicle.make} ${vehicle.model} For Sale`
             .col-lg
-              .listing-price.p-2= `KSH ${vehicle.price}` 
+              .listing-price.p-1= `KSH ${vehicle.price}` 
       
       .listing-details
         .container.detail-page-container
@@ -43,13 +44,13 @@ block content
                 .listing-info
                   .description
                     .features-subheading
-                      h3.vehicle-description-heading.p-2 Description
+                      h3.vehicle-description-heading.p-2.lead Description
                     .listing-info--description
                       .description-wrapper
                         p.vehicles-description.p-2= vehicle.description
                   .overview
                     .overview-subheading
-                      h3.vehicle-overview-heading.p-2 Vehicle overview
+                      h3.vehicle-overview-heading.p-2.lead Vehicle overview
                     .listing-info--overview
                       .overview-warapper
                         ul.overview-list
@@ -100,9 +101,9 @@ block content
                                 
                               div
                                 span= `${vehicle.overview.mileage} Km`
-                  .features
+                  .features.my-3
                     .features-subheading
-                      h3.vehicle-features-heading.p-2 Vehicle features
+                      h3.vehicle-features-heading.p-2.lead Vehicle features
                     .listing-info--features
                       .features-warapper
                         ul.features-list
