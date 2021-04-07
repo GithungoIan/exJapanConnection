@@ -146,7 +146,7 @@ exports.getModelStatsMakes = catchAsync(async (req, res, next) => {
   const models = await Vehicle.aggregate([
     {
       $match : {
-        make : "volkswagen"
+        make : `${req.body.make}`
       }
     },
     {
@@ -159,9 +159,7 @@ exports.getModelStatsMakes = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      models
-    }
+    models
   });
 });
 
