@@ -60,11 +60,11 @@ exports.resizeVehicleImages = catchAsync(async (req, res, next) => {
 
 exports.getAllMakes = catchAsync(async (req, res, next) => {
   const makes = await Vehicle.find({}, {make: 1});
-  
+
   if(!makes) {
     return next(new AppError('No makes found', 404));
   }
-  
+
   res.status(200).json({
     status: 'success',
     results: makes.length,
@@ -77,11 +77,11 @@ exports.getAllMakes = catchAsync(async (req, res, next) => {
 
 exports.getAllModels = catchAsync(async (req, res, next) =>{
   const models = await Vehicle.find({}, {model: 1});
-  
+
   if(!models){
     return next(new AppError('No models found', 404));
   }
-  
+
   res.status(200).json({
     status: 'success',
     results: models.length,
@@ -109,11 +109,13 @@ const getModels = async(model) => {
 
 exports.getMakeStats = catchAsync(async (req, res, next) => {
   const makes = await Vehicle.aggregate([
-    { "$group": {_id: "$make", count: {$sum: 1}}}
+    {
+      "$group": {
+        _id: "$make",
+        count: {$sum: 1}
+      }
+    }
   ]);
-  
-  // const makes = getMakes;
-  
   res.status(200).json({
     status: 'success',
     data: {
@@ -124,9 +126,14 @@ exports.getMakeStats = catchAsync(async (req, res, next) => {
 
 exports.getModelStats = catchAsync(async (req, res, next) => {
   const models = await Vehicle.aggregate([
-    { "$group": {_id: "$model", count: {$sum: 1}}}
+    {
+      "$group": {
+        _id: "$model",
+        count: {$sum: 1}
+      }
+    }
   ]);
-  
+
   res.status(200).json({
     status: 'success',
     data: {
@@ -134,6 +141,27 @@ exports.getModelStats = catchAsync(async (req, res, next) => {
     }
   });
 })
+
+exports.getModelStatsMakes = catchAsync(async (req, res, next) => {
+  const models = await Vehicle.aggregate([
+    {
+      $match : {
+        make : `${req.body.make}`
+      }
+    },
+    {
+      "$group": {
+        _id: "$model",
+        count: {$sum: 1}
+      }
+    }
+  ]);
+
+  res.status(200).json({
+    status: 'success',
+    models
+  });
+});
 
 exports.getAllVehicles = factory.getAll(Vehicle);
 exports.getVehicle = factory.getOne(Vehicle);

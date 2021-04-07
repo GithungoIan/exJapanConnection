@@ -11,20 +11,20 @@ block content
                   h2.box-header.sm
                     | Filter by
                     span.clear-all.m-1 Clear all
-                  form.grid
+                  form.form--vehicles.grid
                     .form-control
                       label.hidden(for='make')
-                      select#make(name='make')
+                      select#make.vehicle-make(name='make')
                         option(value='') All Makes
                         each make in makes
                           option(value=`${make._id}`)= `${make._id } (${make.count})`
                         
-                    .form-control
-                      label.hidden(for='model')
-                      select#model(name='model')
-                        option(value='') All Models
-                        each model in models
-                          option(value=`${model._id}`)= `${model._id } (${model.count})`
+                    .form-control.model-select
+                      label.hidden.model-hidden(for='model')
+                      select#model.vehicle-model(name='model')
+                        option.inner-model#inner-model(value='') All Models
+                        //- each model in models
+                        //-   option(value=`${model._id}`)= `${model._id } (${model.count})`
                           
                     - const prices = [300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1100000]
                     .form-control
