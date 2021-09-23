@@ -3,7 +3,7 @@
 
 ## Technologies
 We are currently using.
-    Node.js, Express and MongoDB
+    Node.js, Express, pug,  and MongoDB
     
 ## Run Script
     npm start -> development
