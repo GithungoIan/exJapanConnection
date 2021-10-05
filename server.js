@@ -12,11 +12,9 @@ dotenv.config({path: './config.env'});
 const app = require('./app');
 
 // const DB = process.env.DATABASE_LOCAL;
-const DB = process.env.ONLINE_DATABASE_URI;
+const DB = process.env.ONLINE_DATABASE;
 
 mongoose.connect(DB, {
-    useCreateIndex: true,
-    useFindAndModify: false,
     useUnifiedTopology: true,
     useNewUrlParser: true,
 }).then(() =>  console.log('DB, Connection established successfully'));

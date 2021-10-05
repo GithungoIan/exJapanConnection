@@ -5,11 +5,9 @@ const Vehicle = require('./../../models/vehicleModel');
 
 dotenv.config({path: '../../config.env'});
 
-const DB = process.env.ONLINE_DATABASE_URI;
+const DB = process.env.ONLINE_DATABASE;
 mongoose.connect(DB, {
   useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
   useUnifiedTopology: true
 }).then(() => console.log('DB connection successful'));
 
